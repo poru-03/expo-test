@@ -1,0 +1,44 @@
+---
+const nav = [
+  { href: '#about', label: 'About' },
+  { href: '#events', label: 'Events' },
+  { href: '#story', label: 'Story' },
+  { href: '#voices', label: 'Voices' },
+  { href: '#partners', label: 'Partners' },
+  { href: '#team', label: 'Team' },
+  { href: '#contact', label: 'Contact' },
+];
+const social = [
+  { href: 'https://exposition.lk', label: 'exposition.lk' },
+  { href: 'https://www.linkedin.com/company/exposition-magazine', label: 'LinkedIn' },
+  { href: 'https://www.facebook.com/exposition.lk', label: 'Facebook' },
+  { href: 'https://www.instagram.com/exposition.lk', label: 'Instagram' },
+];
+---
+<footer class="colophon ink-chapter" data-ground="ink">
+  <div class="colophon__inner">
+    <div class="colophon__top">
+      <div class="colophon__unit">
+        <img class="colophon__wordmark" src="/assets/logo.png" alt="Exposition — Bridging Innovation, Inspiring Excellence" />
+        <p>The annual flagship business magazine of the Department of Industrial Management, University of Kelaniya, Sri Lanka.</p>
+        <div class="colophon__contact">
+          <span>University of Kelaniya, Sri Lanka</span>
+          <a href="tel:+94716846120">+94 71 684 6120</a>
+          <a href="mailto:exposition.uok@gmail.com">exposition.uok@gmail.com</a>
+        </div>
+      </div>
+      <nav class="colophon__links" aria-label="Footer">
+        {nav.map((l) => <a href={l.href}>{l.label}</a>)}
+      </nav>
+      <nav class="colophon__links" aria-label="Social">
+        {social.map((l) => <a href={l.href} target="_blank" rel="noopener">{l.label}</a>)}
+      </nav>
+    </div>
+    <hr class="colophon__rule" />
+    <div class="colophon__base">
+      <span>© 2026 Exposition · Industrial Management Science Students' Association</span>
+      <span>Department of Industrial Management · University of Kelaniya</span>
+    </div>
+  </div>
+  <div class="grain" aria-hidden="true"></div>
+</footer>

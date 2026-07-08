@@ -1,0 +1,36 @@
+---
+const panels = [
+  { label: 'Interviews', title: 'Professionals, academics and alumni, on the record', body: "Long-form conversations with the people steering Sri Lanka's industries — on strategy, succession and the decade ahead." },
+  { label: 'Insights', title: 'Industry insight and emerging trends', body: 'The technology and business currents shaping Management and IT, read and interpreted for a boardroom and a lecture hall alike.' },
+  { label: 'Articles', title: 'Management and IT, side by side', body: 'In-depth analyses and thought-provoking articles that place academic rigour next to working professional practice.' },
+];
+---
+<section class="section" id="inside" data-ground="paper">
+  <div class="section__inner">
+    <div class="section-head reveal">
+      <span class="label label--gold">Inside Issue 22</span>
+      <h2 class="display">Between the <em>covers</em></h2>
+    </div>
+    <div class="inside__grid">
+      <figure class="inside__cover reveal" data-parallax>
+        <img src="/assets/cover.webp" alt="The cover of Exposition magazine — dark portrait cover with gold serif masthead" />
+      </figure>
+      <div>
+        <p class="lede reveal" style="margin-bottom:34px">Each issue brings together expert interviews, industry insights, emerging trends, and articles from professionals, academics, and alumni — bridging the gap between academia and industry.</p>
+        <div class="inside__panels">
+          {panels.map((p) => (
+            <article class="panel reveal">
+              <span class="label label--gold">{p.label}</span>
+              <h3>{p.title}</h3>
+              <p>{p.body}</p>
+            </article>
+          ))}
+        </div>
+        <div class="inside__cta reveal">
+          <span class="label">Read the e-magazine at <a href="https://exposition.lk" target="_blank" rel="noopener">exposition.lk</a></span>
+          <a class="btn btn--ink" href="https://exposition.lk" target="_blank" rel="noopener">Previous Issues</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

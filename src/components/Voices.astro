@@ -1,0 +1,22 @@
+---
+import VoicesCarousel from './islands/VoicesCarousel.jsx';
+import { stats } from '../data/testimonials.js';
+---
+<section class="section ink-chapter voices2" id="voices" data-ground="ink">
+  <div class="section__inner">
+    <div class="section-head reveal">
+      <span class="label label--gold">Community Voices</span>
+      <h2 class="display">Our success <em>stories</em></h2>
+    </div>
+    <div class="voices2__stats">
+      {stats.map((s) => (
+        <div class="voices2__stat reveal">
+          <div class="n">{s.n}</div>
+          <div class="l label">{s.l}</div>
+        </div>
+      ))}
+    </div>
+    <VoicesCarousel client:visible />
+  </div>
+  <div class="grain" aria-hidden="true"></div>
+</section>

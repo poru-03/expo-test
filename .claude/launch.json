@@ -3,9 +3,9 @@
   "configurations": [
     {
       "name": "exposition",
-      "runtimeExecutable": "python",
-      "runtimeArgs": ["-m", "http.server", "8087", "--directory", "E:/Exposition/web 2/expo-test"],
-      "port": 8087
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--", "--host", "127.0.0.1"],
+      "port": 4321
     }
   ]
 }

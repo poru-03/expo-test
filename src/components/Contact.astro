@@ -1,0 +1,48 @@
+---
+const coordinators = [
+  { name: 'Editorial Team', role: 'Exposition Magazine', value: 'exposition.uok@gmail.com', href: 'mailto:exposition.uok@gmail.com' },
+  { name: 'Partnerships & Events', role: 'IMSSA · University of Kelaniya', value: '+94 71 684 6120', href: 'tel:+94716846120' },
+  { name: 'Department of Industrial Management', role: 'Faculty of Science', value: 'kln.ac.lk', href: 'https://kln.ac.lk' },
+];
+---
+<section class="section" id="contact" data-ground="paper">
+  <div class="section__inner">
+    <div class="section-head reveal">
+      <span class="label label--gold">Get in Touch</span>
+      <h2 class="display">Write to the <em>editors</em></h2>
+    </div>
+    <div class="contact__grid">
+      <form class="form" id="contactForm" novalidate>
+        <div class="form__row">
+          <div class="field">
+            <label for="f-name">Name</label>
+            <input id="f-name" name="name" type="text" autocomplete="name" required />
+          </div>
+          <div class="field">
+            <label for="f-designation">Designation</label>
+            <input id="f-designation" name="designation" type="text" autocomplete="organization-title" />
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-contact">Email or phone</label>
+          <input id="f-contact" name="contact" type="text" autocomplete="email" required />
+        </div>
+        <div class="field">
+          <label for="f-message">Message</label>
+          <textarea id="f-message" name="message" rows="4" required></textarea>
+        </div>
+        <button class="btn btn--fill" type="submit">Send Message</button>
+        <p class="form__note" id="formNote" aria-live="polite">Partnerships, contributions and press — the editorial team replies within a few days.</p>
+      </form>
+      <aside class="coordinators">
+        {coordinators.map((c) => (
+          <div class="coordinator reveal">
+            <p class="name">{c.name}</p>
+            <p class="role label label--gold">{c.role}</p>
+            <a class="tel" href={c.href} target={c.href.startsWith('http') ? '_blank' : undefined} rel="noopener">{c.value}</a>
+          </div>
+        ))}
+      </aside>
+    </div>
+  </div>
+</section>

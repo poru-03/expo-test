@@ -1,0 +1,34 @@
+---
+const stats = [
+  { count: 20, plus: true, label: 'Years in print' },
+  { count: 22, plus: false, label: 'Issues published' },
+  { count: 100, plus: true, label: 'Industry partners' },
+  { count: 5, plus: false, label: 'Season events' },
+];
+---
+<section class="section" id="about" data-ground="paper">
+  <div class="section__inner">
+    <div class="section-head reveal">
+      <span class="label label--gold">About Exposition</span>
+      <h2 class="display">Bridging Innovation, <em>Inspiring Excellence</em></h2>
+    </div>
+    <div class="issue__grid">
+      <div class="issue__copy">
+        <p class="lede reveal">Exposition is the annual flagship publication of the Department of Industrial Management — a premier university business magazine that goes beyond showcasing achievements.</p>
+        <hr class="hairline issue__rule reveal" />
+        <p class="reveal">Each issue brings together expert insights, emerging technology and business trends, in-depth analyses, and thought-provoking articles spanning the worlds of Management and IT.</p>
+        <p class="reveal">Through interviews, competitions, and industry forums, Exposition builds the bridge between academia and the professional world — a meaningful resource for students, entrepreneurs, and industry professionals.</p>
+      </div>
+      <div class="stats">
+        {stats.map((s) => (
+          <div class="stat reveal">
+            <span class="stat__num">
+              <span class="foil-num" data-count={s.count}>0</span>{s.plus && <span class="stat__plus">+</span>}
+            </span>
+            <span class="stat__label label">{s.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

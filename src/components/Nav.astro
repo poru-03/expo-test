@@ -1,0 +1,31 @@
+---
+const links = [
+  { href: '#about', label: 'About' },
+  { href: '#events', label: 'Events' },
+  { href: '#voices', label: 'Voices' },
+  { href: '#team', label: 'Team' },
+  { href: '#contact', label: 'Contact' },
+];
+---
+<header class="nav" id="nav">
+  <a class="nav__mark" href="#top" aria-label="Exposition — back to top">
+    <img class="nav__wordmark nav__wordmark--dark" src="/assets/logo.png" alt="Exposition" />
+    <img class="nav__wordmark nav__wordmark--light" src="/assets/logo.png" alt="" />
+    <span class="nav__issue">Issue 22</span>
+  </a>
+  <nav aria-label="Primary">
+    <ul class="nav__links">
+      {links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+    </ul>
+  </nav>
+  <a class="btn btn--ink" href="#contact" data-open-contact>Get in Touch</a>
+  <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span>
+  </button>
+</header>
+
+<nav class="mobile-menu" id="mobileMenu" aria-label="Mobile">
+  <span class="label label--gold">Exposition · Issue 22</span>
+  {links.map((l) => <a href={l.href} data-mobile-link>{l.label}</a>)}
+  <a href="#contact" data-mobile-link data-open-contact>Get in Touch</a>
+</nav>

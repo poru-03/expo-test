@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.astro/
+.vercel/
+.env
+.env.*
+!.env.example
+npm-debug.log*
+*.local
+_tmp_git_probe/
+_tmp_push_clone/

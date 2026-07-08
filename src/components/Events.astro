@@ -1,0 +1,21 @@
+---
+import { events } from '../data/events.js';
+---
+<div id="events">
+  {events.map((e) => (
+    <section class={`spread ${e.ground === 'ink' ? 'spread--mirror ink-chapter' : 'spread--paper'}`} data-ground={e.ground}>
+      <span class={`spread__num spread__num--${e.numSide} foil-num`} aria-hidden="true">{e.num}</span>
+      <div class="spread__inner">
+        <figure class="spread__plate reveal" data-parallax>
+          <img src={e.image} alt={e.alt} loading="lazy" />
+        </figure>
+        <div class="spread__copy">
+          <hr class="hairline spread__rule" data-rule />
+          <span class="label label--gold reveal">{e.label}</span>
+          <h2 class="display reveal" set:html={e.title}></h2>
+          {e.body.map((p) => <p class="reveal">{p}</p>)}
+        </div>
+      </div>
+    </section>
+  ))}
+</div>

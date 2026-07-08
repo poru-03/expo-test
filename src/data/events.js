@@ -1,0 +1,73 @@
+// The five event spreads of the Exposition season (Issue 22).
+export const events = [
+  {
+    num: '01',
+    ground: 'paper',
+    mirror: false,
+    numSide: 'right',
+    image: '/assets/plate-01.webp',
+    alt: 'A gold broadcast microphone catching a single light against darkness',
+    label: 'Podcast Series · Voices of Vision',
+    title: 'Industry knowledge, <em>in conversation</em>',
+    body: [
+      'The Exposition Podcast Series is a forward-looking digital media initiative that transforms industry knowledge into compelling conversations. Centred around the theme “Voices of Vision,” it brings real industry conversations to life through emerging trends, career insights, and the experiences that shape tomorrow\'s professionals.',
+      'Through a consistent mix of long-form episodes and short-form content, the series builds sustained visibility and momentum leading up to the final Exposition event.',
+    ],
+  },
+  {
+    num: '02',
+    ground: 'ink',
+    mirror: true,
+    numSide: 'left',
+    image: '/assets/plate-03.webp',
+    alt: 'A round table seen from above, rimmed in gold',
+    label: 'Industrial Forum · Industry Meets Academia',
+    title: 'Where academia <em>meets</em> industry',
+    body: [
+      'The Industrial Forum is a high-impact thought leadership event designed to bridge the gap between academic theory and industry reality. Held on the launch day of the Exposition Magazine, it brings together a curated panel of industry experts to deliver actionable insights — positioning Exposition as a platform for contemporary industrial discourse.',
+      'Building on a strong legacy of bold conversations and real solutions, the forum continues to evolve as a space where students engage directly with industry thinking in real time.',
+    ],
+  },
+  {
+    num: '03',
+    ground: 'paper',
+    mirror: false,
+    numSide: 'right',
+    image: '/assets/plate-04.webp',
+    alt: 'A single long gold key lying in darkness',
+    label: 'Industrial Week · Career Fair',
+    title: 'From campus to <em>career</em>',
+    body: [
+      'Exposition Industrial Week is a premier platform driven by the Industrial Management Science Students\' Association (IMSSA), dedicated to bridging the gap between academic excellence and industry readiness.',
+      'Through the Exposition Career Fair, it creates a carefully curated space where Sri Lanka\'s leading organizations connect directly with motivated undergraduates and fresh graduates — exploring internships, career openings, and the talent that will define the next generation of industry professionals.',
+    ],
+  },
+  {
+    num: '04',
+    ground: 'ink',
+    mirror: true,
+    numSide: 'left',
+    image: '/assets/plate-05.webp',
+    alt: 'Ten small gold stars loosely constellated in darkness',
+    label: "Expo Next 10 · Today's Potential. Tomorrow's Leaders.",
+    title: 'Ten who define the <em>decade</em>',
+    body: [
+      "EXPO NEXT 10 is Sri Lanka's first undergraduate recognition and development program, dedicated to identifying and celebrating the country's most promising young talent.",
+      'Going beyond academic achievement, it recognizes ten exceptional undergraduates from universities across Sri Lanka who have already demonstrated real-world impact — across technology, business, entrepreneurship, research, sustainability, social impact, and innovation.',
+    ],
+  },
+  {
+    num: '05',
+    ground: 'paper',
+    mirror: false,
+    numSide: 'right',
+    image: '/assets/plate-02.webp',
+    alt: 'A lattice of fine gold nodes joined by hairline filaments',
+    label: 'University Tech Events Hub · One Network',
+    title: 'Every campus tech event, <em>connected</em>',
+    body: [
+      'The University Tech Events Hub is a centralized digital platform that brings together technology-related events from universities across Sri Lanka in one place — hackathons, robotics competitions and innovation challenges that once lived on separate noticeboards.',
+      'The platform publishes well-structured articles covering event overviews, registration details, prize pools, and past highlights, making every opportunity easy to discover for undergraduates island-wide.',
+    ],
+  },
+];
