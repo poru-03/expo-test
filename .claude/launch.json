@@ -4,7 +4,7 @@
     {
       "name": "exposition",
       "runtimeExecutable": "python",
-      "runtimeArgs": ["-m", "http.server", "8087", "--directory", "D:/ExpoWeb"],
+      "runtimeArgs": ["-m", "http.server", "8087", "--directory", "E:/Exposition/web 2/expo-test"],
       "port": 8087
     }
   ]

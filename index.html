@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Exposition Issue 22 — Bridging Innovation, Inspiring Excellence</title>
-<meta name="description" content="Exposition Issue 22 — the flagship annual business magazine of the Department of Industrial Management, University of Kelaniya. Bridging Innovation, Inspiring Excellence.">
+<meta name="description" content="Exposition Issue 22 — the annual flagship business magazine of the Department of Industrial Management, University of Kelaniya. Bridging Innovation, Inspiring Excellence.">
 <link rel="preconnect" href="https://api.fontshare.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,6 +24,9 @@
   </div>
 </div>
 
+<!-- ══════════════ SCROLL PROGRESS ══════════════ -->
+<div class="progress" aria-hidden="true"><div class="progress__fill" id="progressFill"></div></div>
+
 <!-- ══════════════ NAV ══════════════ -->
 <header class="nav" id="nav">
   <a class="nav__mark" href="#top" aria-label="Exposition — back to top">
@@ -33,9 +36,9 @@
   </a>
   <nav aria-label="Primary">
     <ul class="nav__links">
-      <li><a href="#issue">The Issue</a></li>
+      <li><a href="#about">About</a></li>
       <li><a href="#events">Events</a></li>
-      <li><a href="#voices">Voices</a></li>
+      <li><a href="#imssa">IMSSA</a></li>
       <li><a href="#launch">Launch</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -45,41 +48,41 @@
 
 <main id="top">
 
-<!-- ══════════════ HERO — THE POUR (ink chapter) ══════════════ -->
+<!-- ══════════════ HERO — THE MONUMENT (ink chapter) ══════════════ -->
 <section class="hero ink-chapter" id="hero" data-ground="ink">
   <div class="hero__stage" id="heroStage">
-    <div class="hero__media">
-      <video id="pourVideo" muted playsinline preload="auto" aria-hidden="true"></video>
-      <img class="hero__poster" id="pourPoster" src="assets/master.webp" alt="" aria-hidden="true">
-    </div>
-    <span class="hero__ghost22 foil-num" aria-hidden="true">22</span>
+    <canvas class="hero__dust" id="heroDust" aria-hidden="true"></canvas>
+    <div class="hero__bloom" aria-hidden="true"></div>
+    <span class="hero__ghost foil-num" aria-hidden="true">22</span>
     <div class="hero__content">
+      <span class="hero__eyebrow label" id="heroEyebrow">The Annual Business Magazine</span>
       <h1 class="hero__wordmark display" id="heroWordmark">EXPOSITION</h1>
-      <p class="hero__tagline label" id="heroTagline" style="color:var(--gold-400)">Bridging Innovation · Inspiring Excellence</p>
-      <p class="hero__position" id="heroPosition">The annual business magazine of the Department of Industrial Management, University of Kelaniya</p>
-      <div class="hero__actions" id="heroActions">
-        <a class="btn btn--paper" href="#issue">Explore Issue 22</a>
-        <span class="hero__scrollcue">Scroll</span>
+      <div class="hero__meta" id="heroMeta">
+        <span class="hero__issue">Issue <span class="foil-num">22</span></span>
+        <span class="hero__edition label">Department of Industrial Management · University of Kelaniya · 2026</span>
       </div>
     </div>
-    <div class="hero__handoff" id="heroHandoff" aria-hidden="true"></div>
+    <a class="hero__cue" href="#about" id="heroCue" aria-label="Scroll to begin">
+      <span class="label">Begin</span>
+      <span class="hero__cue-line"></span>
+    </a>
     <div class="grain" aria-hidden="true"></div>
   </div>
 </section>
 
-<!-- ══════════════ THE ISSUE (paper) ══════════════ -->
-<section class="section" id="issue" data-ground="paper">
+<!-- ══════════════ ABOUT — EXPOSITION (paper) ══════════════ -->
+<section class="section" id="about" data-ground="paper">
   <div class="section__inner">
     <div class="section-head reveal">
-      <span class="label label--gold">The Issue</span>
-      <h2 class="display">A magazine, and the <em>collection</em> it gathers around itself</h2>
+      <span class="label label--gold">About Exposition</span>
+      <h2 class="display">Bridging Innovation, <em>Inspiring Excellence</em></h2>
     </div>
     <div class="issue__grid">
       <div class="issue__copy">
-        <p class="lede reveal">Exposition is the flagship annual business magazine of the Department of Industrial Management, University of Kelaniya — written, edited and produced by its undergraduates for more than two decades.</p>
+        <p class="lede reveal">Exposition is the annual flagship publication of the Department of Industrial Management — a premier university business magazine that goes beyond showcasing achievements.</p>
         <hr class="hairline issue__rule reveal">
-        <p class="reveal">Each issue bridges management and information technology: interviews with the industry leaders shaping Sri Lanka's economy, research and reflection from academics, and the working knowledge of an alumni network spread across the world's technology and consulting firms.</p>
-        <p class="reveal">Issue 22 arrives the way every issue arrives — at the end of a season of events. A podcast series, a university tech-events hub, an industrial forum and a career fair each gather their own audience, and all of them resolve in a single evening: the launch of the printed magazine.</p>
+        <p class="reveal">Each issue brings together expert insights, emerging technology and business trends, in-depth analyses, and thought-provoking articles spanning the worlds of Management and IT.</p>
+        <p class="reveal">Through interviews, competitions, and industry forums, Exposition builds the bridge between academia and the professional world — a meaningful resource for students, entrepreneurs, and industry professionals.</p>
       </div>
       <div class="stats" id="stats">
         <div class="stat reveal">
@@ -87,7 +90,7 @@
           <span class="stat__label label">Years in print</span>
         </div>
         <div class="stat reveal">
-          <span class="stat__num"><span class="foil-num" data-count="20">0</span><span class="stat__plus">+</span></span>
+          <span class="stat__num"><span class="foil-num" data-count="22">0</span></span>
           <span class="stat__label label">Issues published</span>
         </div>
         <div class="stat reveal">
@@ -95,8 +98,8 @@
           <span class="stat__label label">Industry partners</span>
         </div>
         <div class="stat reveal">
-          <span class="stat__num"><span class="foil-num" data-count="5">0</span><span class="stat__plus">+</span></span>
-          <span class="stat__label label">Event segments</span>
+          <span class="stat__num"><span class="foil-num" data-count="5">0</span></span>
+          <span class="stat__label label">Season events</span>
         </div>
       </div>
     </div>
@@ -115,34 +118,17 @@
     </figure>
     <div class="spread__copy">
       <hr class="hairline spread__rule" data-rule>
-      <span class="label label--gold reveal">Podcast Series · Minds of Tomorrow</span>
-      <h2 class="display reveal">The <em>conversation</em> begins off the page</h2>
-      <p class="reveal">Before a word of Issue 22 is printed, its themes are spoken aloud. The podcast series sits industry leaders, academics and alumni in front of a microphone for long-form conversations about the ideas the magazine will carry.</p>
-      <p class="reveal">Each episode is a working draft of the issue itself — the questions asked here become the interviews, columns and debates that reach print at the launch.</p>
+      <span class="label label--gold reveal">Podcast Series · Voices of Vision</span>
+      <h2 class="display reveal">Industry knowledge, <em>in conversation</em></h2>
+      <p class="reveal">The Exposition Podcast Series is a forward-looking digital media initiative that transforms industry knowledge into compelling conversations. Centred around the theme “Voices of Vision,” it brings real industry conversations to life through emerging trends, career insights, and the experiences that shape tomorrow's professionals.</p>
+      <p class="reveal">Through a consistent mix of long-form episodes and short-form content, the series builds sustained visibility and momentum leading up to the final Exposition event.</p>
     </div>
   </div>
 </section>
 
-<!-- 02 · Uni-Tech Hub (ink) -->
+<!-- 02 · Industrial Forum (ink) -->
 <section class="spread spread--mirror ink-chapter" data-ground="ink">
   <span class="spread__num spread__num--left foil-num" aria-hidden="true">02</span>
-  <div class="spread__inner">
-    <figure class="spread__plate reveal" data-parallax>
-      <img src="assets/plate-02.webp" alt="A lattice of fine gold nodes joined by hairline filaments" loading="lazy">
-    </figure>
-    <div class="spread__copy">
-      <hr class="hairline spread__rule" data-rule>
-      <span class="label label--gold reveal">Uni-Tech Hub · One Network</span>
-      <h2 class="display reveal">Every campus tech event, <em>connected</em></h2>
-      <p class="reveal">The Uni-Tech Hub gathers the technology events of Sri Lanka's universities into a single map — hackathons, workshops, meet-ups and competitions that once lived on separate noticeboards.</p>
-      <p class="reveal">For students it is one place to find what is happening; for organisers, a shared audience. The hub keeps the network alive between issues, so the magazine never starts from silence.</p>
-    </div>
-  </div>
-</section>
-
-<!-- 03 · Industrial Forum (paper) -->
-<section class="spread spread--paper" data-ground="paper">
-  <span class="spread__num spread__num--right foil-num" aria-hidden="true">03</span>
   <div class="spread__inner">
     <figure class="spread__plate reveal" data-parallax>
       <img src="assets/plate-03.webp" alt="A round table seen from above, rimmed in gold" loading="lazy">
@@ -150,86 +136,94 @@
     <div class="spread__copy">
       <hr class="hairline spread__rule" data-rule>
       <span class="label label--gold reveal">Industrial Forum · Industry Meets Academia</span>
-      <h2 class="display reveal">One table, <em>two</em> worlds</h2>
-      <p class="reveal">The Industrial Forum seats executives, engineers and faculty around the same table to argue the questions that matter to both: what industry needs from graduates, and what research should ask of industry.</p>
-      <p class="reveal">The forum's conclusions are not filed away — they are written up, edited and carried into Issue 22 as its analytical spine.</p>
+      <h2 class="display reveal">Where academia <em>meets</em> industry</h2>
+      <p class="reveal">The Industrial Forum is a high-impact thought leadership event designed to bridge the gap between academic theory and industry reality. Held on the launch day of the Exposition Magazine, it brings together a curated panel of industry experts to deliver actionable insights — positioning Exposition as a platform for contemporary industrial discourse.</p>
+      <p class="reveal">Building on a strong legacy of bold conversations and real solutions, the forum continues to evolve as a space where students engage directly with industry thinking in real time.</p>
     </div>
   </div>
 </section>
 
-<!-- 04 · Career Fair (ink) -->
-<section class="spread spread--mirror ink-chapter" data-ground="ink">
-  <span class="spread__num spread__num--left foil-num" aria-hidden="true">04</span>
+<!-- 03 · Industrial Week & Career Fair (paper) -->
+<section class="spread spread--paper" data-ground="paper">
+  <span class="spread__num spread__num--right foil-num" aria-hidden="true">03</span>
   <div class="spread__inner">
     <figure class="spread__plate reveal" data-parallax>
       <img src="assets/plate-04.webp" alt="A single long gold key lying in darkness" loading="lazy">
     </figure>
     <div class="spread__copy">
       <hr class="hairline spread__rule" data-rule>
-      <span class="label label--gold reveal">Career Fair · First Doors</span>
-      <h2 class="display reveal">The key changes <em>hands</em></h2>
-      <p class="reveal">The career fair brings the department's partner companies to campus for a day of interviews, portfolio reviews and offers — the moment the magazine's readership steps into its subject matter.</p>
-      <p class="reveal">For many undergraduates it is the first professional door that opens; for partners, first access to a cohort trained at the intersection of management and IT.</p>
+      <span class="label label--gold reveal">Industrial Week · Career Fair</span>
+      <h2 class="display reveal">From campus to <em>career</em></h2>
+      <p class="reveal">Exposition Industrial Week is a premier platform driven by the Industrial Management Science Students' Association (IMSSA), dedicated to bridging the gap between academic excellence and industry readiness.</p>
+      <p class="reveal">Through the Exposition Career Fair, it creates a carefully curated space where Sri Lanka's leading organizations connect directly with motivated undergraduates and fresh graduates — exploring internships, career openings, and the talent that will define the next generation of industry professionals.</p>
     </div>
   </div>
 </section>
 
-<!-- 05 · EXPO NEXT 10 (paper) -->
-<section class="spread spread--paper" data-ground="paper">
-  <span class="spread__num spread__num--right foil-num" aria-hidden="true">05</span>
+<!-- 04 · EXPO NEXT 10 (ink) -->
+<section class="spread spread--mirror ink-chapter" data-ground="ink">
+  <span class="spread__num spread__num--left foil-num" aria-hidden="true">04</span>
   <div class="spread__inner">
     <figure class="spread__plate reveal" data-parallax>
       <img src="assets/plate-05.webp" alt="Ten small gold stars loosely constellated in darkness" loading="lazy">
     </figure>
     <div class="spread__copy">
       <hr class="hairline spread__rule" data-rule>
-      <span class="label label--gold reveal">Expo Next 10 · The Decade Ahead</span>
-      <h2 class="display reveal">Ten stars for the <em>next</em> ten years</h2>
-      <p class="reveal">EXPO NEXT 10 turns the collection's attention forward: a stage for the ten ideas, ventures and voices most likely to define the coming decade of Sri Lankan business and technology.</p>
-      <p class="reveal">It is the closing argument of the season — and the reason the launch that follows feels less like an ending than a beginning.</p>
+      <span class="label label--gold reveal">Expo Next 10 · Today's Potential. Tomorrow's Leaders.</span>
+      <h2 class="display reveal">Ten who define the <em>decade</em></h2>
+      <p class="reveal">EXPO NEXT 10 is Sri Lanka's first undergraduate recognition and development program, dedicated to identifying and celebrating the country's most promising young talent.</p>
+      <p class="reveal">Going beyond academic achievement, it recognizes ten exceptional undergraduates from universities across Sri Lanka who have already demonstrated real-world impact — across technology, business, entrepreneurship, research, sustainability, social impact, and innovation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 05 · University Tech Events Hub (paper) -->
+<section class="spread spread--paper" data-ground="paper">
+  <span class="spread__num spread__num--right foil-num" aria-hidden="true">05</span>
+  <div class="spread__inner">
+    <figure class="spread__plate reveal" data-parallax>
+      <img src="assets/plate-02.webp" alt="A lattice of fine gold nodes joined by hairline filaments" loading="lazy">
+    </figure>
+    <div class="spread__copy">
+      <hr class="hairline spread__rule" data-rule>
+      <span class="label label--gold reveal">University Tech Events Hub · One Network</span>
+      <h2 class="display reveal">Every campus tech event, <em>connected</em></h2>
+      <p class="reveal">The University Tech Events Hub is a centralized digital platform that brings together technology-related events from universities across Sri Lanka in one place — hackathons, robotics competitions and innovation challenges that once lived on separate noticeboards.</p>
+      <p class="reveal">The platform publishes well-structured articles covering event overviews, registration details, prize pools, and past highlights, making every opportunity easy to discover for undergraduates island-wide.</p>
     </div>
   </div>
 </section>
 
 </div>
 
-<!-- ══════════════ VOICES (paper) ══════════════ -->
-<section class="section" id="voices" data-ground="paper">
+<!-- ══════════════ ABOUT — IMSSA (paper) ══════════════ -->
+<section class="section" id="imssa" data-ground="paper">
   <div class="section__inner">
     <div class="section-head reveal">
-      <span class="label label--gold">Voices</span>
-      <h2 class="display">What the room <em>remembers</em></h2>
+      <span class="label label--gold">The Association</span>
+      <h2 class="display">The heartbeat of the Department since <em>2005</em></h2>
     </div>
-    <div class="voices__list">
-      <figure class="voice reveal">
-        <hr class="hairline voice__rule" data-rule>
-        <blockquote>“The students didn't ask what our company does. They asked what it <span class="accent">should</span> do next. That is the difference this department teaches.”</blockquote>
-        <figcaption>
-          <span class="label">Keynote Speaker</span>
-          <span class="label">Industrial Forum · Exposition 21</span>
-        </figcaption>
-      </figure>
-      <figure class="voice reveal">
-        <hr class="hairline voice__rule" data-rule>
-        <blockquote>“Most university magazines report on their world. Exposition argues with it — and the argument is usually <span class="accent">right</span>.”</blockquote>
-        <figcaption>
-          <span class="label">Alumni Contributor</span>
-          <span class="label">Global Technology Consultancy</span>
-        </figcaption>
-      </figure>
-      <figure class="voice reveal">
-        <hr class="hairline voice__rule" data-rule>
-        <blockquote>“We came to the career fair to fill six positions. We left with a <span class="accent">pipeline</span>.”</blockquote>
-        <figcaption>
-          <span class="label">Head of Talent</span>
-          <span class="label">Career Fair Partner · Exposition 20</span>
-        </figcaption>
-      </figure>
+    <div class="issue__grid">
+      <div class="issue__copy">
+        <p class="lede reveal">The Industrial Management Science Students' Association has been the heartbeat of the Department since 2005.</p>
+        <hr class="hairline issue__rule reveal">
+        <p class="reveal">As the leading student body of the Department of Industrial Management, IMSSA drives a calendar of high-impact initiatives — from Exposition and HackX to outreach programs that sharpen the professional and personal edge of every undergraduate it represents.</p>
+      </div>
+      <div class="stats">
+        <div class="stat reveal">
+          <span class="stat__num"><span class="foil-num">2005</span></span>
+          <span class="stat__label label">Established</span>
+        </div>
+        <div class="stat reveal">
+          <span class="stat__num"><span class="foil-num" data-count="20">0</span><span class="stat__plus">+</span></span>
+          <span class="stat__label label">Years of initiatives</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════ INSIDE ISSUE 22 (paper, tinted panels) ══════════════ -->
+<!-- ══════════════ INSIDE ISSUE 22 — THE MAGAZINE (paper, tinted panels) ══════════════ -->
 <section class="section" id="inside" data-ground="paper">
   <div class="section__inner">
     <div class="section-head reveal">
@@ -241,25 +235,27 @@
         <img src="assets/cover.webp" alt="The cover of Exposition magazine — dark portrait cover with gold serif masthead">
       </figure>
       <div>
+        <p class="lede reveal" style="margin-bottom:34px">Each issue brings together expert interviews, industry insights, emerging trends, and articles from professionals, academics, and alumni — bridging the gap between academia and industry.</p>
         <div class="inside__panels">
           <article class="panel reveal">
             <span class="label label--gold">Interviews</span>
-            <h3>Industry leaders, on the record</h3>
-            <p>Long-form conversations with the executives steering Sri Lanka's banks, telcos and technology firms — on strategy, succession and the decade ahead.</p>
-          </article>
-          <article class="panel reveal">
-            <span class="label label--gold">Articles</span>
-            <h3>Academics and alumni, side by side</h3>
-            <p>Faculty research rendered readable, next to field notes from graduates working inside the companies that research describes.</p>
+            <h3>Professionals, academics and alumni, on the record</h3>
+            <p>Long-form conversations with the people steering Sri Lanka's industries — on strategy, succession and the decade ahead.</p>
           </article>
           <article class="panel reveal">
             <span class="label label--gold">Insights</span>
-            <h3>Research that leaves the library</h3>
-            <p>Undergraduate and departmental studies distilled into findings a boardroom can act on — supply chains, algorithms, markets and the people inside them.</p>
+            <h3>Industry insight and emerging trends</h3>
+            <p>The technology and business currents shaping Management and IT, read and interpreted for a boardroom and a lecture hall alike.</p>
+          </article>
+          <article class="panel reveal">
+            <span class="label label--gold">Articles</span>
+            <h3>Management and IT, side by side</h3>
+            <p>In-depth analyses and thought-provoking articles that place academic rigour next to working professional practice.</p>
           </article>
         </div>
         <div class="inside__cta reveal">
           <span class="label">Read the e-magazine at <a href="https://exposition.lk" target="_blank" rel="noopener">exposition.lk</a></span>
+          <a class="btn btn--ink" href="https://exposition.lk" target="_blank" rel="noopener">Previous Issues</a>
         </div>
       </div>
     </div>
@@ -275,9 +271,9 @@
     </div>
     <span class="launch__ghost22 foil-num" aria-hidden="true">22</span>
     <div class="launch__content">
-      <span class="label label--gold">Exposition Issue 22 · Magazine Launch</span>
-      <h2 class="display">The gold <em>sets</em>. The issue is printed.</h2>
-      <p>Every event of the season resolves here — one evening, one stage, and the first copies of Issue 22 leaving the press for the room.</p>
+      <span class="label label--gold">Exposition Magazine Launch</span>
+      <h2 class="display">The season closes. The issue <em>opens</em>.</h2>
+      <p>The closing event of Industrial Week — one evening, one stage, and the official launch of Exposition Issue 22.</p>
     </div>
     <div class="grain" aria-hidden="true"></div>
   </div>
@@ -341,13 +337,14 @@
   <div class="colophon__inner">
     <div class="colophon__top">
       <div class="colophon__unit">
-        <img class="colophon__wordmark" src="assets/logo.png" alt="Exposition — The Magazine that Bridges Management & IT">
-        <p>The flagship annual business magazine of the Department of Industrial Management, University of Kelaniya, Sri Lanka.</p>
+        <img class="colophon__wordmark" src="assets/logo.png" alt="Exposition — Bridging Innovation, Inspiring Excellence">
+        <p>The annual flagship business magazine of the Department of Industrial Management, University of Kelaniya, Sri Lanka.</p>
       </div>
       <nav class="colophon__links" aria-label="Footer">
-        <a href="#issue">The Issue</a>
+        <a href="#about">About</a>
         <a href="#events">Events</a>
-        <a href="#voices">Voices</a>
+        <a href="#imssa">IMSSA</a>
+        <a href="#inside">Magazine</a>
         <a href="#launch">Launch</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -367,15 +364,10 @@
   <div class="grain" aria-hidden="true"></div>
 </footer>
 
-<!-- The continuous foil thread -->
-<div class="thread" id="thread" aria-hidden="true">
-  <div class="thread__track" id="threadTrack"></div>
-  <div class="thread__fill" id="threadFill"></div>
-</div>
-
 <script src="js/vendor/gsap.min.js"></script>
 <script src="js/vendor/ScrollTrigger.min.js"></script>
 <script src="js/vendor/lenis.min.js"></script>
+<script src="js/hero.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>

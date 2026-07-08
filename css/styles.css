@@ -1,5 +1,5 @@
 /* ============================================================
-   EXPOSITION ISSUE 22 — Foundations v1.2
+   EXPOSITION ISSUE 22 — Foundations v2.0 (Monument revamp)
    Paper #FAF7F1 · Ink #14110A · Gold foil 200/400/500/600
    General Sans 300–600 · Bodoni Moda 500 (foil numerals only)
    ============================================================ */
@@ -14,6 +14,7 @@
   --gold-500: #AE8C64;
   --gold-600: #93704A;
   --foil: linear-gradient(105deg, #93704A 0%, #DDC49A 52%, #AE8C64 100%);
+  --foil-soft: linear-gradient(105deg, #AE8C64 0%, #E7D3AE 50%, #C2A06C 100%);
   --ink-60: rgba(20, 17, 10, 0.62);
   --ink-30: rgba(20, 17, 10, 0.30);
   --ink-12: rgba(20, 17, 10, 0.12);
@@ -22,9 +23,10 @@
   --paper-12: rgba(250, 247, 241, 0.14);
   --sans: 'General Sans', 'Segoe UI', system-ui, sans-serif;
   --serif: 'Bodoni Moda', serif;
-  --section-y: clamp(112px, 12vw, 160px);
+  --section-y: clamp(120px, 13vw, 184px);
   --gutter: clamp(24px, 6vw, 96px);
-  --thread-x: 50%;
+  --seam: clamp(96px, 12vw, 200px);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -48,7 +50,7 @@ body {
 
 ::selection { background: var(--gold-200); color: var(--ink); }
 
-img, video { max-width: 100%; display: block; }
+img, video, canvas { max-width: 100%; display: block; }
 
 a { color: inherit; }
 
@@ -142,6 +144,25 @@ a { color: inherit; }
   outline-offset: 3px;
 }
 
+/* ---------- Scroll progress — a whisper-thin foil line at the top ---------- */
+
+.progress {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  z-index: 120;
+  background: transparent;
+  pointer-events: none;
+}
+.progress__fill {
+  height: 100%;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background: var(--foil);
+  opacity: 0.9;
+}
+
 /* ---------- Preloader ---------- */
 
 .preloader {
@@ -204,7 +225,7 @@ a { color: inherit; }
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--ink-12);
-  transition: background 0.6s ease, border-color 0.6s ease, transform 0.5s ease;
+  transition: background 0.6s ease, border-color 0.6s ease, transform 0.5s var(--ease-out);
 }
 
 .nav--hidden { transform: translateY(-100%); }
@@ -235,6 +256,7 @@ a { color: inherit; }
 }
 
 .nav__links a {
+  position: relative;
   font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.22em;
@@ -245,7 +267,18 @@ a { color: inherit; }
   padding: 8px 0;
 }
 
+.nav__links a::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 100%; height: 1px;
+  background: var(--gold-500);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.4s var(--ease-out);
+}
 .nav__links a:hover { color: var(--ink); }
+.nav__links a:hover::after { transform: scaleX(1); }
 
 .nav .btn { padding: 12px 22px; min-height: 40px; }
 
@@ -256,6 +289,7 @@ a { color: inherit; }
 }
 .nav.nav--ink .nav__links a { color: var(--paper-70); }
 .nav.nav--ink .nav__links a:hover { color: var(--paper); }
+.nav.nav--ink .nav__links a::after { background: var(--gold-200); }
 .nav.nav--ink .nav__issue { color: var(--gold-400); }
 .nav.nav--ink .btn--ink { color: var(--paper); border-color: var(--paper-40); }
 .nav.nav--ink .btn--ink:hover { background: var(--paper); color: var(--ink); }
@@ -265,7 +299,7 @@ a { color: inherit; }
 
 .nav__toggle { display: none; }
 
-/* ---------- Ink chapters, grain ---------- */
+/* ---------- Ink chapters, seams, grain ---------- */
 
 .ink-chapter {
   background: var(--ink);
@@ -273,14 +307,32 @@ a { color: inherit; }
   position: relative;
 }
 
-.spread.ink-chapter::before {
+/* Dust texture on the event ink spreads (dimmed via an ink veil) */
+.spread.ink-chapter {
+  background:
+    linear-gradient(rgba(20, 17, 10, 0.62), rgba(20, 17, 10, 0.62)),
+    url('../assets/dust.webp') center / cover no-repeat,
+    var(--ink);
+}
+
+/* THE LINE — a single crisp gold foil hairline marks every paper↔ink
+   boundary. Clean, defined edges; the motion lives in the slide-up. */
+.ink-chapter::before,
+.ink-chapter::after {
   content: '';
   position: absolute;
-  inset: 0;
-  background: url('../assets/dust.webp') center / cover no-repeat;
-  opacity: 0.4;
+  left: 0; right: 0;
+  height: 1px;
+  background: var(--foil);
+  opacity: 0.55;
   pointer-events: none;
+  z-index: 7;
 }
+.ink-chapter::before { top: 0; }
+.ink-chapter::after { bottom: 0; }
+/* The hero opens the page and the colophon closes it — no line beyond them */
+.hero.ink-chapter::before,
+.colophon.ink-chapter::after { display: none; }
 
 .ink-chapter .grain {
   position: absolute;
@@ -291,35 +343,7 @@ a { color: inherit; }
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.86 0 0 0 0 0.77 0 0 0 0 0.60 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* ---------- The Thread ---------- */
-
-.thread {
-  position: absolute;
-  top: 0;
-  left: var(--thread-x);
-  width: 1px;
-  z-index: 5;
-  pointer-events: none;
-}
-
-.thread__track,
-.thread__fill {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.thread__track { opacity: 0.16; }
-
-.thread__fill {
-  transform-origin: top center;
-  transform: scaleY(0);
-  opacity: 0.9;
-}
-
-/* ---------- Hero ---------- */
+/* ---------- Hero — the monument ---------- */
 
 .hero { position: relative; }
 
@@ -327,36 +351,55 @@ a { color: inherit; }
   position: relative;
   height: 100vh;
   height: 100svh;
+  min-height: 640px;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: var(--ink);
 }
 
-.hero__media {
+.hero__dust {
   position: absolute;
   inset: 0;
   z-index: 1;
-}
-
-.hero__media video,
-.hero__media img.hero__poster {
-  position: absolute;
-  inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
 }
 
-.hero__ghost22 {
+/* A slow, breathing gold bloom behind the masthead */
+.hero__bloom {
   position: absolute;
-  z-index: 2;
-  font-size: clamp(300px, 58vw, 900px);
-  opacity: 0.15;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -52%);
+  z-index: 1;
+  left: 50%; top: 46%;
+  width: min(120vw, 1200px);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle at center,
+    rgba(221, 196, 154, 0.20) 0%,
+    rgba(194, 160, 108, 0.10) 26%,
+    rgba(20, 17, 10, 0) 62%);
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+html:not(.no-motion) .hero__bloom { animation: bloom 14s ease-in-out infinite; }
+
+@keyframes bloom {
+  0%, 100% { opacity: 0.75; transform: translate(-50%, -50%) scale(1); }
+  50%      { opacity: 1;    transform: translate(-50%, -50%) scale(1.12); }
+}
+
+/* Giant ghost "22" — the edition, whispered */
+.hero__ghost {
+  position: absolute;
+  z-index: 1;
+  right: clamp(-40px, -2vw, 0px);
+  bottom: -6vh;
+  font-size: clamp(340px, 46vw, 760px);
+  opacity: 0.06;
   user-select: none;
+  pointer-events: none;
+  line-height: 0.8;
 }
 
 .hero__content {
@@ -365,69 +408,90 @@ a { color: inherit; }
   text-align: center;
   padding: 0 var(--gutter);
   width: 100%;
+  max-width: 1100px;
+}
+
+.hero__eyebrow {
+  display: block;
+  color: var(--gold-400);
+  margin-bottom: clamp(20px, 3vw, 34px);
 }
 
 .hero__wordmark {
-  font-size: clamp(52px, 9.5vw, 148px);
+  font-size: clamp(42px, 11vw, 178px);
   color: var(--paper);
-  mix-blend-mode: screen;
-}
-
-.hero__tagline { margin-top: 26px; color: var(--gold-400); }
-
-.hero__position {
-  margin: 30px auto 0;
-  max-width: 62ch;
-  color: var(--paper-70);
+  letter-spacing: clamp(0.01em, 0.3vw, 0.07em);
+  line-height: 0.94;
   font-weight: 300;
-  font-size: clamp(15px, 1.5vw, 18px);
-  opacity: 0;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 
-.hero__actions {
-  margin-top: 44px;
+/* per-letter reveal wrappers (added by JS) */
+.hero__wordmark .ltr {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+.hero__meta {
+  margin-top: clamp(26px, 3.4vw, 46px);
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 34px;
-  opacity: 0;
-}
-
-.hero__scrollcue {
-  display: inline-flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
-  color: var(--paper-40);
-  font-size: 10px;
-  letter-spacing: 0.32em;
+  gap: 16px;
+}
+
+.hero__issue {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.34em;
+  font-weight: 300;
+  font-size: clamp(15px, 1.4vw, 19px);
+  letter-spacing: 0.42em;
   text-transform: uppercase;
-  font-weight: 500;
+  color: var(--paper-70);
+}
+.hero__issue .foil-num { font-size: 1.9em; letter-spacing: 0; }
+
+.hero__edition {
+  color: var(--paper-40);
+  font-size: 10.5px;
+  letter-spacing: 0.28em;
 }
 
-.hero__scrollcue::after {
-  content: '';
-  width: 1px;
-  height: 44px;
-  background: linear-gradient(to bottom, var(--gold-400), transparent);
-  animation: cue 2.4s ease-in-out infinite;
-}
-
-@keyframes cue {
-  0%, 100% { transform: scaleY(0.4); transform-origin: top; opacity: 0.4; }
-  50% { transform: scaleY(1); opacity: 1; }
-}
-
-.hero__handoff {
+.hero__cue {
   position: absolute;
-  z-index: 4;
+  z-index: 3;
   left: 50%;
-  bottom: 0;
+  bottom: clamp(26px, 4vh, 52px);
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  color: var(--paper-40);
+}
+.hero__cue .label { font-size: 9.5px; letter-spacing: 0.4em; }
+.hero__cue-line {
   width: 1px;
-  height: 46vh;
-  transform-origin: bottom center;
-  transform: translateX(-0.5px) scaleY(0);
-  background: linear-gradient(to top, var(--gold-200), rgba(221, 196, 154, 0));
+  height: 54px;
+  background: linear-gradient(to bottom, var(--gold-200), rgba(221, 196, 154, 0));
+  overflow: hidden;
+  position: relative;
+}
+html:not(.no-motion) .hero__cue-line::after {
+  content: '';
+  position: absolute;
+  left: 0; top: 0;
+  width: 100%; height: 40%;
+  background: linear-gradient(to bottom, var(--gold-200), rgba(221, 196, 154, 0));
+  animation: cueRun 2.4s var(--ease-out) infinite;
+}
+@keyframes cueRun {
+  0%   { transform: translateY(-100%); opacity: 0; }
+  30%  { opacity: 1; }
+  100% { transform: translateY(150%); opacity: 0; }
 }
 
 /* ---------- Generic section scaffolding ---------- */
@@ -444,11 +508,13 @@ a { color: inherit; }
   margin: 0 auto;
 }
 
-.section-head { margin-bottom: clamp(48px, 6vw, 84px); }
+.section-head { margin-bottom: clamp(48px, 6vw, 84px); max-width: 20ch; }
+.section-head--wide { max-width: none; }
+
+.section-head .label { display: block; margin-bottom: 18px; }
 
 .section-head .display {
   font-size: clamp(34px, 4.6vw, 62px);
-  margin-top: 18px;
 }
 
 /* ---------- The Issue ---------- */
@@ -519,7 +585,7 @@ a { color: inherit; }
 
 .spread__num {
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   top: clamp(24px, 4vw, 56px);
   font-size: clamp(120px, 13vw, 200px);
   opacity: 0.85;
@@ -620,6 +686,11 @@ a { color: inherit; }
   background: var(--panel);
   padding: clamp(28px, 3vw, 40px);
   border-top: 1px solid var(--gold-500);
+  transition: transform 0.5s var(--ease-out), box-shadow 0.5s var(--ease-out);
+}
+.panel:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 26px 50px rgba(20, 17, 10, 0.10);
 }
 
 .panel h3 {
@@ -649,6 +720,7 @@ a { color: inherit; }
   position: relative;
   height: 100vh;
   height: 100svh;
+  min-height: 620px;
   overflow: hidden;
   display: flex;
   align-items: flex-end;
@@ -664,6 +736,14 @@ a { color: inherit; }
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* A veil so the copy always sits on legible ink */
+.launch__media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(20, 17, 10, 0.86) 0%, rgba(20, 17, 10, 0.30) 55%, rgba(20, 17, 10, 0.55) 100%);
 }
 
 .launch__ghost22 {
@@ -684,10 +764,11 @@ a { color: inherit; }
   padding: 0 var(--gutter) clamp(72px, 10vh, 128px);
 }
 
+.launch__content .label { display: block; margin-bottom: 14px; }
+
 .launch__content .display {
   font-size: clamp(34px, 4.6vw, 58px);
   color: var(--paper);
-  margin-top: 18px;
 }
 
 .launch__content p {
@@ -769,7 +850,7 @@ a { color: inherit; }
 /* ---------- Colophon ---------- */
 
 .colophon {
-  padding: clamp(64px, 8vw, 96px) var(--gutter) 42px;
+  padding: clamp(96px, 11vw, 150px) var(--gutter) 42px;
 }
 
 .colophon__inner { max-width: 1240px; margin: 0 auto; }
@@ -825,8 +906,6 @@ a { color: inherit; }
 .reveal { opacity: 0; transform: translateY(28px); }
 
 html.no-motion .reveal { opacity: 1; transform: none; }
-html.no-motion .hero__position,
-html.no-motion .hero__actions { opacity: 1; }
 
 /* ---------- Responsive ---------- */
 
@@ -834,12 +913,13 @@ html.no-motion .hero__actions { opacity: 1; }
   .nav__links { display: none; }
   .issue__grid, .inside__grid, .contact__grid { grid-template-columns: 1fr; }
   .stats { grid-template-columns: repeat(2, 1fr); }
+  .section-head { max-width: 26ch; }
 }
 
 @media (max-width: 767px) {
   :root {
-    --thread-x: 12px;
     --gutter: clamp(30px, 8vw, 48px);
+    --seam: clamp(72px, 18vw, 120px);
   }
 
   body { font-size: 16px; }
@@ -849,6 +929,10 @@ html.no-motion .hero__actions { opacity: 1; }
   .nav__wordmark { height: 22px; }
   .nav .btn { padding: 10px 14px; min-height: 40px; font-size: 10px; letter-spacing: 0.16em; white-space: nowrap; }
 
+  .hero__wordmark { font-size: clamp(34px, 11.4vw, 88px); letter-spacing: 0.02em; }
+  .hero__eyebrow { font-size: 10px; }
+  .hero__ghost { font-size: 74vw; bottom: 2vh; }
+
   .spread__inner { grid-template-columns: 1fr; gap: 40px; }
   .spread--mirror .spread__plate { order: 1; }
   .spread--mirror .spread__copy { order: 2; }
@@ -857,9 +941,6 @@ html.no-motion .hero__actions { opacity: 1; }
   .form__row { grid-template-columns: 1fr; }
   .stats { grid-template-columns: 1fr 1fr; gap: 24px; }
   .stat__num { font-size: 72px; }
-
-  .hero__actions { flex-direction: column; gap: 26px; }
-  .hero__ghost22 { font-size: 74vw; }
 
   .inside__cover { max-width: 300px; }
 }
