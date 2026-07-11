@@ -8,7 +8,7 @@ const dates = [
 ];
 const whatsNew = ['Voices of Vision (podcast)', 'University Tech Events Hub', 'EXPO NEXT 10'];
 ---
-<section class="section" id="this-year" data-ground="paper">
+<section class="section ink-chapter" id="this-year" data-ground="ink">
   <div class="section__inner">
     <div class="section-head reveal">
       <span class="label label--gold">This Year · Issue 22</span>
@@ -18,9 +18,9 @@ const whatsNew = ['Voices of Vision (podcast)', 'University Tech Events Hub', 'E
       <div class="issue__copy">
         <p class="lede reveal">A professional, elegant, modern theme, consistent with Exposition's identity as a serious business publication.</p>
         <hr class="hairline issue__rule reveal" />
-        <div class="datelist">
+        <div class="datelist stagger">
           {dates.map((d) => (
-            <div class="datelist__row reveal">
+            <div class="datelist__row">
               <span class="datelist__when label label--gold">{d.when}</span>
               <span class="datelist__what">{d.what}{d.note && <em class="datelist__note"> ({d.note})</em>}</span>
             </div>
@@ -30,7 +30,7 @@ const whatsNew = ['Voices of Vision (podcast)', 'University Tech Events Hub', 'E
       </div>
       <aside class="thisyear__new reveal">
         <span class="label label--gold">New This Year</span>
-        <ul class="thisyear__new-list">
+        <ul class="thisyear__new-list stagger">
           {whatsNew.map((w, i) => (
             <li>
               <span class="thisyear__new-num foil-num">{String(i + 1).padStart(2, '0')}</span>

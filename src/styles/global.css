@@ -104,6 +104,8 @@ a { color: inherit; }
 .btn--paper:hover, .btn--paper:focus-visible { background: var(--paper); color: var(--ink); }
 .btn--fill { color: var(--paper); background: var(--ink); border: 1px solid var(--ink); }
 .btn--fill:hover, .btn--fill:focus-visible { background: var(--ink-elev); border-color: var(--ink-elev); }
+.ink-chapter .btn--fill { color: var(--ink); background: var(--paper); border-color: var(--paper); }
+.ink-chapter .btn--fill:hover, .ink-chapter .btn--fill:focus-visible { background: var(--gold-200); border-color: var(--gold-200); }
 :focus-visible { outline: 2px solid var(--gold-500); outline-offset: 3px; }
 
 /* ---------- Scroll progress ---------- */
@@ -216,7 +218,7 @@ body.menu-open .mobile-menu { clip-path: inset(0 0 0 0); pointer-events: auto; }
 /* ---------- Section scaffolding ---------- */
 .section { position: relative; padding: var(--section-y) var(--gutter); }
 .section__inner { position: relative; z-index: 10; max-width: 1240px; margin: 0 auto; }
-.section-head { margin-bottom: clamp(48px,6vw,84px); max-width: 20ch; }
+.section-head { margin-bottom: clamp(48px,6vw,84px); max-width: 38ch; }
 .section-head--wide { max-width: none; }
 .section-head .label { display: block; margin-bottom: 18px; }
 .section-head .display { font-size: clamp(34px,4.6vw,62px); }
@@ -231,11 +233,13 @@ body.menu-open .mobile-menu { clip-path: inset(0 0 0 0); pointer-events: auto; }
 .issue__copy .lede { font-size: clamp(20px,2vw,26px); line-height: 1.5; font-weight: 300; }
 .issue__copy .lede .accent { font-weight: 500; }
 .issue__rule { margin: 34px 0; }
-.stats { display: grid; gap: clamp(30px,3.4vw,46px); }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: clamp(30px,3.4vw,46px); }
 .stat { border-top: 1px solid var(--ink-12); padding-top: 22px; }
-.stat__num { font-size: clamp(96px,8vw,118px); display: flex; align-items: baseline; gap: 4px; }
+.ink-chapter .stat { border-top-color: var(--paper-12); }
+.stat__num { font-size: clamp(64px,6vw,96px); display: flex; align-items: baseline; gap: 4px; }
 .stat__plus { font-family: var(--serif); font-weight: 500; font-size: 0.42em; background: var(--foil); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; transform: translateY(-0.35em); }
 .stat__label { margin-top: 10px; color: var(--ink-60); }
+.ink-chapter .stat__label { color: var(--paper-40); }
 
 /* ---------- Event spreads ---------- */
 .spread { position: relative; padding: var(--section-y) var(--gutter); overflow: hidden; }
@@ -314,7 +318,7 @@ html:not(.no-motion) .marquee__track { animation: marquee-scroll 42s linear infi
 .partner-chip__name { font-size: 13px; font-weight: 400; color: var(--ink-60); white-space: nowrap; }
 
 /* ---------- Archive ---------- */
-.archive__status { border-top: 1px solid var(--gold-500); background: var(--panel); padding: clamp(24px,2.4vw,34px); margin-bottom: 28px; max-width: 68ch; }
+.archive__status { border-top: 1px solid var(--gold-500); background: var(--panel); padding: clamp(24px,2.4vw,34px); margin-bottom: 28px; max-width: 68ch; color: var(--ink); }
 .archive__status p { margin-top: 10px; font-weight: 300; font-size: 16px; }
 .archive__status a { color: var(--gold-600); }
 .archive__lede { font-weight: 300; font-size: clamp(16px,1.35vw,19px); max-width: 62ch; margin-bottom: clamp(28px,3vw,40px); }
@@ -339,10 +343,14 @@ html:not(.no-motion) .marquee__track { animation: marquee-scroll 42s linear infi
 .team__nav { display: flex; gap: 12px; margin-top: 34px; }
 .team__btn { width: 54px; height: 54px; border: 1px solid var(--ink-30); background: transparent; color: var(--ink); cursor: pointer; display: grid; place-items: center; transition: all 0.3s ease; }
 .team__btn:hover { background: var(--ink); color: var(--paper); }
+.ink-chapter .team__btn { border-color: var(--paper-40); color: var(--paper); }
+.ink-chapter .team__btn:hover { background: var(--paper); color: var(--ink); }
 .team__progress { margin-top: 22px; height: 1px; background: var(--ink-12); position: relative; }
+.ink-chapter .team__progress { background: var(--paper-12); }
 .team__progress span { position: absolute; left: 0; top: 0; height: 100%; background: var(--foil); transition: width 0.5s var(--ease-out); }
 .team__contact { display: flex; gap: 16px; margin-top: 24px; }
 .team__contact a { color: var(--ink-60); transition: color 0.3s ease; }
+.ink-chapter .team__contact a { color: var(--paper-40); }
 .team__contact a:hover { color: var(--gold-600); }
 
 /* ---------- Community Voices (island) ---------- */
@@ -369,7 +377,7 @@ html:not(.no-motion) .marquee__track { animation: marquee-scroll 42s linear infi
 .inside__cover { position: relative; max-width: 420px; }
 .inside__cover img { width: 100%; height: auto; box-shadow: 34px 44px 90px rgba(20,17,10,0.28); }
 .inside__panels { display: grid; gap: 18px; }
-.panel { background: var(--panel); padding: clamp(28px,3vw,40px); border-top: 1px solid var(--gold-500); transition: transform 0.5s var(--ease-out), box-shadow 0.5s var(--ease-out); }
+.panel { background: var(--panel); padding: clamp(28px,3vw,40px); border-top: 1px solid var(--gold-500); color: var(--ink); transition: transform 0.5s var(--ease-out), box-shadow 0.5s var(--ease-out); }
 .panel:hover { transform: translateY(-4px); box-shadow: 0 26px 50px rgba(20,17,10,0.10); }
 .panel h3 { font-weight: 500; font-size: clamp(18px,1.7vw,22px); letter-spacing: -0.01em; margin: 12px 0 10px; }
 .panel p { color: var(--ink-60); font-weight: 300; font-size: 16px; max-width: 62ch; }
@@ -398,18 +406,23 @@ html:not(.no-motion) .marquee__track { animation: marquee-scroll 42s linear infi
 .form__row { display: grid; gap: 30px; grid-template-columns: 1fr 1fr; }
 .field { display: grid; gap: 10px; }
 .field label { font-size: 11px; font-weight: 500; letter-spacing: 0.32em; text-transform: uppercase; color: var(--ink-60); }
+.ink-chapter .field label { color: var(--paper-40); }
 .field input, .field textarea { font-family: var(--sans); font-size: 16px; font-weight: 400; color: var(--ink); background: transparent; border: 0; border-bottom: 1px solid var(--ink-30); padding: 12px 2px; border-radius: 0; transition: border-color 0.3s ease; min-height: 44px; }
+.ink-chapter .field input, .ink-chapter .field textarea { color: var(--paper); border-bottom-color: var(--paper-40); }
 .field textarea { resize: vertical; min-height: 120px; }
 .field input:focus, .field textarea:focus { outline: none; border-bottom-color: var(--gold-600); }
 .form .btn { justify-self: start; margin-top: 6px; }
 .form__note { font-size: 13px; color: var(--ink-60); font-weight: 300; }
+.ink-chapter .form__note { color: var(--paper-40); }
 .coordinators { display: grid; gap: 18px; }
 .datelist { display: flex; flex-direction: column; }
 .datelist__row { display: grid; grid-template-columns: minmax(120px,180px) 1fr; gap: 18px; padding: 16px 0; border-top: 1px solid var(--ink-12); }
+.ink-chapter .datelist__row { border-top-color: var(--paper-12); }
 .datelist__what { font-weight: 300; font-size: 16px; }
 .datelist__note { color: var(--ink-60); font-style: italic; }
+.ink-chapter .datelist__note { color: var(--paper-40); }
 
-.thisyear__new { background: var(--panel); border-top: 1px solid var(--gold-500); padding: clamp(28px,3vw,40px); align-self: start; }
+.thisyear__new { background: var(--panel); border-top: 1px solid var(--gold-500); padding: clamp(28px,3vw,40px); align-self: start; color: var(--ink); }
 .thisyear__new-list { margin-top: 22px; display: flex; flex-direction: column; }
 .thisyear__new-list li { display: flex; align-items: baseline; gap: 18px; padding: 16px 0; border-top: 1px solid var(--ink-12); }
 .thisyear__new-list li:first-child { border-top: none; padding-top: 0; }
@@ -417,11 +430,15 @@ html:not(.no-motion) .marquee__track { animation: marquee-scroll 42s linear infi
 .thisyear__new-text { font-weight: 300; font-size: 16px; }
 
 .coordinator__address { font-weight: 300; font-size: 15px; color: var(--ink-60); margin-bottom: 24px; }
+.ink-chapter .coordinator__address { color: var(--paper-40); }
 .coordinator { border-top: 1px solid var(--ink-12); padding-top: 20px; }
+.ink-chapter .coordinator { border-top-color: var(--paper-12); }
 .coordinator .name { font-weight: 500; font-size: 17px; }
 .coordinator .role { margin-top: 4px; }
 .coordinator .tel { display: inline-block; margin-top: 10px; font-size: 15px; font-weight: 300; color: var(--ink-60); text-decoration: none; }
 .coordinator .tel:hover { color: var(--ink); }
+.ink-chapter .coordinator .tel { color: var(--paper-40); }
+.ink-chapter .coordinator .tel:hover { color: var(--paper); }
 
 /* ---------- Colophon ---------- */
 .colophon { padding: clamp(96px,11vw,150px) var(--gutter) 42px; }
@@ -452,6 +469,22 @@ html:not(.no-motion) .marquee__track { animation: marquee-scroll 42s linear infi
 .riser--in { opacity: 1; transform: none; }
 html.no-motion .riser { opacity: 1; transform: none; transition: none; }
 
+/* Staggered children — plays automatically on paint (CSS-only, no JS/observer
+   dependency, so it can never get stuck invisible regardless of scroll state) */
+@keyframes staggerIn { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+.stagger > * { animation: staggerIn 0.65s var(--ease-out) both; animation-delay: 0.5s; }
+html.no-motion .stagger > * { animation: none; opacity: 1; transform: none; }
+.stagger > *:nth-child(1) { animation-delay: 0.05s; }
+.stagger > *:nth-child(2) { animation-delay: 0.11s; }
+.stagger > *:nth-child(3) { animation-delay: 0.17s; }
+.stagger > *:nth-child(4) { animation-delay: 0.23s; }
+.stagger > *:nth-child(5) { animation-delay: 0.29s; }
+.stagger > *:nth-child(6) { animation-delay: 0.35s; }
+.stagger > *:nth-child(7) { animation-delay: 0.41s; }
+.stagger > *:nth-child(8) { animation-delay: 0.47s; }
+.stagger > *:nth-child(9) { animation-delay: 0.53s; }
+.stagger > *:nth-child(n+10) { animation-delay: 0.58s; }
+
 .hairline--animate { transform: scaleX(0); transform-origin: left center; transition: transform 0.9s var(--ease-out); }
 .hairline--in { transform: scaleX(1); }
 html.no-motion .hairline--animate { transform: none; transition: none; }
@@ -465,7 +498,7 @@ html.no-motion .hairline--animate { transform: none; transition: none; }
   .hero__monument { display: none; }
   .voices2__slide { grid-template-columns: 1fr; }
   .stats { grid-template-columns: repeat(2,1fr); }
-  .section-head { max-width: 26ch; }
+  .section-head { max-width: 30ch; }
   .voices2__stats { grid-template-columns: repeat(2,1fr); }
   .story__grid { grid-template-columns: repeat(2,1fr); }
 }

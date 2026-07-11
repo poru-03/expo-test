@@ -2,13 +2,13 @@
 import { highlights } from '../data/speakers.js';
 const initials = (n) => n.split(' ').filter(Boolean).slice(0, 2).map((w) => w[0]).join('');
 ---
-<section class="section" id="highlights" data-ground="paper">
+<section class="section ink-chapter" id="highlights" data-ground="ink">
   <div class="section__inner">
     <div class="section-head section-head--wide reveal">
       <h2 class="display">Undergraduates <em>secured</em> these names</h2>
       <p class="section-head__sub">Not a PR agency. Students secured, interviewed, and hosted every name here.</p>
     </div>
-    <div class="people-rail" role="list">
+    <div class="people-rail stagger" role="list">
       {highlights.map((s) => (
         <article class="speaker" role="listitem">
           <div class="speaker__photo">
@@ -24,7 +24,7 @@ const initials = (n) => n.split(' ').filter(Boolean).slice(0, 2).map((w) => w[0]
       ))}
     </div>
     <div class="reveal" style="margin-top:40px">
-      <a class="btn btn--ink" href="#legacy">See the Full Highlights Wall →</a>
+      <a class="btn btn--paper" href="#legacy">See the Full Highlights Wall →</a>
     </div>
   </div>
 </section>

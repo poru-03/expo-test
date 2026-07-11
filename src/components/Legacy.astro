@@ -9,14 +9,14 @@ const initials = (n) => n.split(' ').filter(Boolean).slice(0, 2).map((w) => w[0]
       <h2 class="display">Our Legacy</h2>
       <p class="section-head__sub">Two decades of undergraduates landing the conversations that matter.</p>
     </div>
-    <div class="voices2__stats reveal" style="grid-template-columns:repeat(3,1fr);margin-bottom:clamp(48px,5vw,72px)">
+    <div class="voices2__stats stagger" style="grid-template-columns:repeat(3,1fr);margin-bottom:clamp(48px,5vw,72px)">
       <div class="voices2__stat"><div class="n">20</div><div class="l label">Years</div></div>
       <div class="voices2__stat"><div class="n">20+</div><div class="l label">Issues</div></div>
       <div class="voices2__stat"><div class="n">100+</div><div class="l label">Interviews</div></div>
     </div>
 
     <h3 class="legacy__subhead reveal">Keynote Highlights</h3>
-    <div class="people-rail" role="list">
+    <div class="people-rail stagger" role="list">
       {keynoteHighlights.map((s) => (
         <article class="speaker" role="listitem">
           <div class="speaker__photo">
@@ -39,7 +39,7 @@ const initials = (n) => n.split(' ').filter(Boolean).slice(0, 2).map((w) => w[0]
     </div>
 
     <h3 class="legacy__subhead reveal" style="margin-top:clamp(48px,5vw,72px)">Featured Interviews</h3>
-    <div class="people-rail" role="list">
+    <div class="people-rail stagger" role="list">
       {featuredInterviews.map((p) => (
         <article class="speaker" role="listitem">
           <div class="speaker__photo">
@@ -56,7 +56,7 @@ const initials = (n) => n.split(' ').filter(Boolean).slice(0, 2).map((w) => w[0]
     </div>
 
     <h3 class="legacy__subhead reveal" style="margin-top:clamp(48px,5vw,72px)">What Partners & Guests Say</h3>
-    <div class="highlights__grid">
+    <div class="highlights__grid stagger">
       {legacyTestimonials.map((t) => (
         <article class="hl-card reveal">
           <p class="hl-card__quote">&ldquo;{t.quote}&rdquo;</p>
