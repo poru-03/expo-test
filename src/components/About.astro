@@ -9,24 +9,28 @@ const stats = [
 <section class="section ink-chapter" id="about" data-ground="ink">
   <div class="section__inner">
     <div class="section-head reveal">
+      <span class="label label--gold">About Exposition</span>
       <h2 class="display">Bridging Innovation, <em>Inspiring Excellence</em></h2>
     </div>
     <div class="issue__grid">
       <div class="issue__copy">
-        <p class="lede reveal">Exposition is a student-run industry-engagement platform organised by the Industrial Management Science Students' Association at the Department of Industrial Management, University of Kelaniya. Every year, undergraduates — not a publishing house, not an agency — plan it, report it, and bring in the industry leaders featured in it.</p>
-        <hr class="hairline issue__rule reveal" />
-        <p class="reveal">At its centre is Exposition Magazine, running for over 20 years and 20+ issues. Around it sits a calendar of live events — a podcast, an industry forum, a career fair, and a national recognition programme — that connect students directly with the people shaping Sri Lankan business and technology.</p>
+        <p class="lede reveal">Exposition is a student-run industry-engagement platform organised by the Industrial Management Science Students' Association at the Department of Industrial Management, University of Kelaniya.</p>
       </div>
-      <div class="stats stagger">
-        {stats.map((s) => (
-          <div class="stat reveal">
-            <span class="stat__num">
-              <span class="foil-num" data-count={s.count}>0</span>{s.plus && <span class="stat__plus">+</span>}
-            </span>
-            <span class="stat__label label">{s.label}</span>
-          </div>
-        ))}
+      <div class="issue__copy">
+        <p class="reveal">Every year, undergraduates, not a publishing house or an agency, plan it, report it, and bring in the industry leaders featured in it.</p>
+        <p class="reveal">At its centre is Exposition Magazine, running for over 20 years. Around it sits a calendar of live events that connect students directly with the people shaping Sri Lankan business and technology.</p>
       </div>
     </div>
+    <div class="statstrip stagger">
+      {stats.map((s) => (
+        <div class="stat">
+          <span class="stat__num">
+            <span class="foil-num" data-count={s.count}>0</span>{s.plus && <span class="stat__plus">+</span>}
+          </span>
+          <span class="stat__label label">{s.label}</span>
+        </div>
+      ))}
+    </div>
   </div>
+  <div class="grain" aria-hidden="true"></div>
 </section>

@@ -1,21 +1,26 @@
 ---
 import { events } from '../data/events.js';
 ---
-<div id="events">
-  {events.map((e) => (
-    <section class={`spread ${e.ground === 'ink' ? 'spread--mirror ink-chapter' : 'spread--paper'}`} data-ground={e.ground}>
-      <span class={`spread__num spread__num--${e.numSide} foil-num`} aria-hidden="true">{e.num}</span>
-      <div class="spread__inner">
-        <figure class="spread__plate reveal" data-parallax>
-          <img src={e.image} alt={e.alt} loading="lazy" />
-        </figure>
-        <div class="spread__copy">
-          <hr class="hairline spread__rule" data-rule />
-          <span class="label label--gold reveal">{e.label}</span>
-          <h2 class="display reveal" set:html={e.title}></h2>
-          {e.body.map((p) => <p class="reveal">{p}</p>)}
-        </div>
-      </div>
-    </section>
-  ))}
-</div>
+<section class="section ink-chapter" id="events" data-ground="ink">
+  <div class="section__inner">
+    <div class="section-head section-head--wide reveal">
+      <span class="label label--gold">The Season</span>
+      <h2 class="display">One magazine, <em>many stages</em></h2>
+    </div>
+    <div class="bento stagger">
+      {events.map((e) => (
+        <article class="bento__card">
+          <div class="bento__media">
+            <img src={e.image} alt={e.alt} loading="lazy" />
+          </div>
+          <div class="bento__body">
+            <span class="label label--gold">{e.label}</span>
+            <h3 class="bento__title" set:html={e.title}></h3>
+            <p class="bento__desc">{e.body[0]}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+  <div class="grain" aria-hidden="true"></div>
+</section>
