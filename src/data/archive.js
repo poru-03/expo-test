@@ -1,7 +1,3 @@
-// Read/Archive: Issues 1-18 are available in full. Issues 19-21 are referenced
-// elsewhere on the site via named interviews/keynotes but aren't yet in a
-// readable archive format — add them here once available rather than listing
-// them as readable now (content brief, Page 2).
-export const archiveIssues = Array.from({ length: 18 }, (_, i) => ({
-  num: i + 1,
-}));
+// Issues available: 18, 19, 20, 21. Issues 1–17 are not available in digital form.
+// Issue 22 is in production (launching January 2027) — handled separately in Archive.astro.
+export const archiveIssues = [18, 19, 20, 21].map((num) => ({ num }));

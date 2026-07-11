@@ -1,28 +1,3 @@
-# **Exposition Website — Issue 22 Content**
-
-### **Merged build: Content Blueprint (structure/rules) \+ Issue 22 additions (what's new) \+ site-content.md (verified history)**
-
-Prepared for: Organizing Committee, Exposition — Dept. of Industrial Management, University of Kelaniya
-
----
-
-## **How to read this document**
-
-Every section below is tagged **\[This Year\]** (Issue 22-specific, swap annually) or **\[Evergreen\]** (persists across years), followed by its **CTA** (the one next step for the visitor) and its **primary visitor** (from Blueprint Part 2). This mirrors the Part 6 template so it drops straight into a content-management sheet.
-
-Three corrections were made to speaker credibility tags carried over from the old site — flagged inline where they occur, with sources, per Part 5 Rule 5 ("verify every fact").
-
-**Open items — need OC / content-owner sign-off before launch** (per Part 5 Rule 4, these stay out until real):
-
-1. Issue 22 team roster — real names and role-based emails (currently demo placeholders in Team \+ Contact).  
-2. Confirmed Issue 22 partner list — last year's roster is shown as historical partnership record only, not claimed as this year's live sponsors, until reconfirmed.  
-3. A live mechanism for "notify me when Issue 22 launches" (email capture / social follow) — copy assumes this exists; confirm the actual method before build.  
-4. Exact Issue 22 cover art and PDF/reader link — placeholder status only until the issue exists.  
-5. EXPO NEXT 10 applicant pool size (how many apply before the first cut to 50\) — left unstated below since it wasn't provided; add if known, otherwise the "50" figure stands alone.
-
----
-
----
 
 # **PAGE 1 — HOMEPAGE**
 

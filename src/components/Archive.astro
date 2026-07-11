@@ -3,21 +3,37 @@ import { archiveIssues } from '../data/archive.js';
 ---
 <section class="section ink-chapter" id="archive" data-ground="ink">
   <div class="section__inner">
-    <div class="section-head section-head--wide reveal">
-      <h2 class="display">20+ years of Exposition, <em>in one place</em></h2>
-      <p class="section-head__sub">While you wait, read 18 years of Exposition. Issues 1 through 18 are available in full below.</p>
+    <div class="section-head reveal">
+      <span class="label label--gold">Read the Magazine</span>
+      <h2 class="display">Issues 18 – 21, <em>now available</em></h2>
+      <p class="section-head__sub">Our four most recent issues are available to read in full. Issue 22 launches 15 January 2027.</p>
     </div>
 
-    <div class="archive__status reveal">
-      <span class="label label--gold">Issue 22, launching January 2027</span>
-      <p>Issue 22 is in production and launches 15 January 2027 at the Exposition Magazine Launch. Cover reveal and the full read link go live at the launch, <a href="#contact" data-open-contact>get notified</a> when it's ready.</p>
+    <!-- Issue 22 Coming Soon Banner -->
+    <div class="archive-coming-soon reveal">
+      <div class="archive-coming-soon__num foil-num">22</div>
+      <div class="archive-coming-soon__info">
+        <span class="label label--gold">Issue 22 · Coming January 2027</span>
+        <h3>In Production</h3>
+        <p>Issue 22 launches 15 January 2027 at the Exposition Magazine Launch. Cover reveal and the full read link go live at the event.</p>
+        <a class="btn btn--paper" href="#contact" data-open-contact>Get Notified →</a>
+      </div>
     </div>
 
-    <div class="archive__rail" role="list">
-      {archiveIssues.map((i) => (
-        <a class="archive-card reveal" role="listitem" href="https://exposition.lk" target="_blank" rel="noopener" aria-label={`Read Exposition Issue ${i.num}`}>
-          <span class="archive-card__num foil-num">{i.num}</span>
-          <span class="archive-card__read label">Read</span>
+    <!-- Issues 18–21 — all available to read -->
+    <div class="archive-grid archive-grid--few">
+      {archiveIssues.map((iss) => (
+        <a
+          class="archive-mag-card"
+          href="https://exposition.lk"
+          target="_blank"
+          rel="noopener"
+          aria-label={`Read Exposition Issue ${iss.num}`}
+        >
+          <div class="archive-mag-card__inner">
+            <span class="archive-mag-card__num foil-num">{iss.num}</span>
+            <span class="archive-mag-card__label label">Read</span>
+          </div>
         </a>
       ))}
     </div>

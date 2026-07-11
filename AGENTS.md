@@ -7,7 +7,7 @@ Read this first in any future session before touching this repo. It describes th
 A single-page marketing site for **Exposition**, the annual flagship business magazine of the Department of Industrial Management, University of Kelaniya, Sri Lanka. Built with **Astro 5** + **React islands** + **Tailwind** (base styles disabled, hand-written CSS drives the design) + **GSAP/Lenis** for scroll motion.
 
 - Remote: `https://github.com/poru-03/expo-test.git` (`origin`)
-- Live domain: `exposition.lk`
+- Live domain: `exposition.lk` (temporarily hosted on Vercel)
 - Dev server: `npm run dev` → `astro dev` on port 4321
 - Build: `npm run build` (outputs via `astro build`, catches type/syntax errors — always run before pushing)
 
@@ -18,7 +18,7 @@ A single-page marketing site for **Exposition**, the annual flagship business ma
 There is **one route**, `src/pages/index.astro`. It composes `.astro` section components in order inside `<main>`. There is no multi-page routing — nav links are same-page anchors (`#id`) smooth-scrolled via Lenis (see `src/scripts/site.js`). Do not create new `src/pages/*.astro` routes for "Archive", "Legacy", "Partners", "Careers", etc. — these are sections on the one page, not separate pages.
 
 Section order in `index.astro` (each is `src/components/<Name>.astro`):
-`Hero → About → Imssa → Story → Events → Speakers → InterviewHighlights → Voices → Partners → Team → FeaturedCTA → Inside → Launch → Contact` then `Footer` outside `<main>`.
+`Hero → About → Imssa → ThisYear → Archive → Story → Events → Highlights → Legacy → Voices → Partners → Careers → Team → FeaturedCTA → Inside → Launch → Contact` then `Footer` outside `<main>`.
 
 Each section follows the same shell convention:
 ```astro
@@ -37,19 +37,20 @@ Each section follows the same shell convention:
 - `.foil-num[data-count="N"]` = animated count-up number.
 - `.hairline[data-rule]` = animated horizontal rule.
 - `[data-parallax] img` = parallax image (used for plates/cover art).
-- Interactive/stateful pieces are React islands under `src/components/islands/*.jsx`, hydrated with `client:visible` or `client:idle`, and imported directly into their `.astro` wrapper.
+- Interactive/stateful pieces are React islands under `src/components/islands/*.jsx` (such as `ContactModal.jsx`, `PartnersFilter.jsx`, `TeamCarousel.jsx`, `VoicesCarousel.jsx`), hydrated with `client:visible` or `client:idle`, and imported directly into their `.astro` wrapper (or in `index.astro` for global overlays like `ContactModal`).
 
 ## Data-driven content
 
 Section components pull copy/data from `src/data/*.js` rather than hardcoding arrays inline — **always edit the data file, not the component**, when updating rosters/lists:
+- `archive.js` — list of issues (Issues 1-18) for the `Archive.astro` section
 - `events.js` — the 5 "event universe" spreads (podcast, forum, career fair, EXPO NEXT 10, tech hub)
 - `partners.js` — partner org list
-- `speakers.js` — `keynoteSpeakers` + `interviewHighlights` arrays
+- `speakers.js` — `highlights`, `keynoteHighlights`, and `featuredInterviews` arrays
 - `team.js` — organizing committee (currently placeholder names pending real OC roster)
-- `testimonials.js` — `stats` + testimonial quotes (rotated by `VoicesCarousel.jsx`)
+- `testimonials.js` — `stats`, `homepageTestimonials` (rotated by `VoicesCarousel.jsx`), and `legacyTestimonials` (used in `Legacy.astro`)
 - `timeline.js` — `milestones` for the horizontal "Our Journey" story scroller
 
-Components with a few hardcoded items inline (not worth a data file): `Nav.astro` (nav links), `Footer.astro` (nav+social links), `Inside.astro` (3 "inside issue" panels), `Contact.astro` (3 coordinator contact cards).
+Components with a few hardcoded items inline (not worth a data file): `Nav.astro` (nav links), `Footer.astro` (nav+social links), `Inside.astro` (3 "inside issue" panels), `Contact.astro` (3 coordinator contact cards), `ThisYear.astro` (event dates and new features), `Careers.astro` (job sectors and local recruitment panel).
 
 ## Content source of truth
 
