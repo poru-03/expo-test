@@ -130,36 +130,56 @@ function init() {
   }
   setTimeout(finishPreloader, 3500);
 
-  /* ---------- Section fade-in reveal (lightweight, one-shot) ---------- */
+  /* ---------- Section fade-in reveal (IntersectionObserver — robust with Lenis) ---------- */
   const risers = document.querySelectorAll('.section__inner, .spread__inner, .colophon__inner');
-  gsap.set(risers, { y: 50, opacity: 0 });
-  risers.forEach((inner) => {
-    gsap.to(inner, { y: 0, opacity: 1, duration: 0.9, ease: 'power2.out', scrollTrigger: { trigger: inner, start: 'top 88%', once: true } });
-  });
+  risers.forEach((el) => el.classList.add('riser'));
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('riser--in');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0, rootMargin: '0px 0px -10% 0px' });
+  risers.forEach((el) => revealObserver.observe(el));
 
   /* Hairlines */
-  document.querySelectorAll('[data-rule]').forEach((el) => {
-    gsap.from(el, { scaleX: 0, transformOrigin: 'left center', duration: 0.9, ease: 'power3.inOut', scrollTrigger: { trigger: el, start: 'top 90%', once: true } });
-  });
+  document.querySelectorAll('[data-rule]').forEach((el) => el.classList.add('hairline--animate'));
+  const ruleObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('hairline--in');
+        ruleObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0, rootMargin: '0px 0px -10% 0px' });
+  document.querySelectorAll('[data-rule]').forEach((el) => ruleObserver.observe(el));
 
-  /* Plate parallax (kept — cheap, transform-only) */
+  /* Plate parallax (kept on GSAP — inherently continuous, few elements) */
   document.querySelectorAll('[data-parallax] img').forEach((img) => {
     gsap.fromTo(img, { yPercent: -6 }, { yPercent: 6, ease: 'none', scrollTrigger: { trigger: img.closest('[data-parallax]'), start: 'top bottom', end: 'bottom top', scrub: true } });
   });
 
   /* Count-ups (one-shot) */
-  document.querySelectorAll('.foil-num[data-count]').forEach((el) => {
-    const end = parseInt(el.getAttribute('data-count'), 10);
-    const obj = { v: 0 };
-    ScrollTrigger.create({ trigger: el, start: 'top 88%', once: true, onEnter: () => gsap.to(obj, { v: end, duration: 1.4, ease: 'power2.out', onUpdate: () => { el.textContent = Math.round(obj.v); } }) });
-  });
+  const countObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const end = parseInt(el.getAttribute('data-count'), 10);
+      const obj = { v: 0 };
+      gsap.to(obj, { v: end, duration: 1.4, ease: 'power2.out', onUpdate: () => { el.textContent = Math.round(obj.v); } });
+      countObserver.unobserve(el);
+    });
+  }, { threshold: 0, rootMargin: '0px 0px -12% 0px' });
+  document.querySelectorAll('.foil-num[data-count]').forEach((el) => countObserver.observe(el));
 
   /* Nav inversion */
-  const inkTriggers = [];
-  document.querySelectorAll('[data-ground="ink"]').forEach((section) => {
-    inkTriggers.push(ScrollTrigger.create({ trigger: section, start: 'top 48px', end: 'bottom 48px', onToggle: updateNavInk, onRefresh: updateNavInk }));
-  });
-  function updateNavInk() { nav.classList.toggle('nav--ink', inkTriggers.some((t) => t.isActive)); }
+  const inkSections = document.querySelectorAll('[data-ground="ink"]');
+  function updateNavInk() { nav.classList.toggle('nav--ink', navInkList(48)); }
+  const navObserver = new IntersectionObserver(updateNavInk, { threshold: [0, 1], rootMargin: '-48px 0px -100% 0px' });
+  inkSections.forEach((s) => navObserver.observe(s));
+  window.addEventListener('scroll', updateNavInk, { passive: true });
+  updateNavInk();
 
   /* Progress */
   gsap.ticker.add(scrollProgress);
@@ -167,7 +187,6 @@ function init() {
   bindForm();
   ScrollTrigger.refresh();
   window.addEventListener('load', () => ScrollTrigger.refresh());
-  setTimeout(() => ScrollTrigger.refresh(), 800);
 }
 
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);

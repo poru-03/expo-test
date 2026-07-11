@@ -433,8 +433,13 @@ html:not(.no-motion) .marquee__track { animation: marquee-scroll 42s linear infi
 .modal__close:hover { background: var(--ink); color: var(--paper); }
 
 /* ---------- Reveal defaults (JS adds motion) ---------- */
-.reveal { opacity: 0; transform: translateY(28px); }
-html.no-motion .reveal { opacity: 1; transform: none; }
+.riser { opacity: 0; transform: translateY(50px); transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out); }
+.riser--in { opacity: 1; transform: none; }
+html.no-motion .riser { opacity: 1; transform: none; transition: none; }
+
+.hairline--animate { transform: scaleX(0); transform-origin: left center; transition: transform 0.9s var(--ease-out); }
+.hairline--in { transform: scaleX(1); }
+html.no-motion .hairline--animate { transform: none; transition: none; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 1023px) {
