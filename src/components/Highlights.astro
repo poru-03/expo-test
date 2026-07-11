@@ -4,11 +4,10 @@ const initials = (n) => n.split(' ').filter(Boolean).slice(0, 2).map((w) => w[0]
 ---
 <section class="section" id="highlights" data-ground="paper">
   <div class="section__inner">
-    <div class="section-head reveal">
-      <span class="label label--gold">Highlights</span>
+    <div class="section-head section-head--wide reveal">
       <h2 class="display">Undergraduates <em>secured</em> these names</h2>
+      <p class="section-head__sub">Not a PR agency. Students secured, interviewed, and hosted every name here.</p>
     </div>
-    <p class="reveal archive__lede">Undergraduates — not a PR agency — have secured, interviewed, and hosted these names.</p>
     <div class="people-rail" role="list">
       {highlights.map((s) => (
         <article class="speaker" role="listitem">

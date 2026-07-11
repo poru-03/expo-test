@@ -5,18 +5,17 @@ const initials = (n) => n.split(' ').filter(Boolean).slice(0, 2).map((w) => w[0]
 ---
 <section class="section ink-chapter" id="legacy" data-ground="ink">
   <div class="section__inner">
-    <div class="section-head reveal">
-      <span class="label label--gold">Our Legacy</span>
-      <h2 class="display">Two Decades of Excellence, <em>Built by Students</em></h2>
+    <div class="section-head section-head--wide reveal">
+      <h2 class="display">Our Legacy</h2>
+      <p class="section-head__sub">Two decades of undergraduates landing the conversations that matter.</p>
     </div>
-    <div class="voices2__stats reveal" style="margin-bottom:clamp(48px,5vw,72px)">
+    <div class="voices2__stats reveal" style="grid-template-columns:repeat(3,1fr);margin-bottom:clamp(48px,5vw,72px)">
       <div class="voices2__stat"><div class="n">20</div><div class="l label">Years</div></div>
       <div class="voices2__stat"><div class="n">20+</div><div class="l label">Issues</div></div>
       <div class="voices2__stat"><div class="n">100+</div><div class="l label">Interviews</div></div>
     </div>
-    <p class="reveal archive__lede" style="color:var(--paper-70)">Two decades of undergraduates landing the conversations that matter — read the full history, every keynote, every interview.</p>
 
-    <h3 class="legacy__subhead reveal">Keynote Highlights — <em>Voices that fuelled our vision</em></h3>
+    <h3 class="legacy__subhead reveal">Keynote Highlights</h3>
     <div class="people-rail" role="list">
       {keynoteHighlights.map((s) => (
         <article class="speaker" role="listitem">
@@ -31,34 +30,32 @@ const initials = (n) => n.split(' ').filter(Boolean).slice(0, 2).map((w) => w[0]
           {s.company && <p class="speaker__company">{s.company}</p>}
           {s.tags?.length > 0 && (
             <div class="speaker__tags">
-              {s.tags.map((t) => <span class="tag">{t}</span>)}
+              {s.tags.slice(0, 2).map((t) => <span class="tag">{t}</span>)}
             </div>
           )}
-          {s.note && <p class="speaker__note" title={s.note}>⚠ Corrected — see note</p>}
+          {s.note && <p class="speaker__note" title={s.note}>Corrected, see note</p>}
         </article>
       ))}
     </div>
 
-    <h3 class="legacy__subhead reveal" style="margin-top:clamp(56px,6vw,86px)">Featured Interviews</h3>
-    <div class="highlights__grid">
+    <h3 class="legacy__subhead reveal" style="margin-top:clamp(48px,5vw,72px)">Featured Interviews</h3>
+    <div class="people-rail" role="list">
       {featuredInterviews.map((p) => (
-        <article class="hl-card reveal">
-          <span class="label label--gold">{p.category} · {p.issue}</span>
-          <div class="hl-card__foot" style="margin-top:0">
+        <article class="speaker" role="listitem">
+          <div class="speaker__photo">
             {p.image
-              ? <img class="hl-card__avatar" src={p.image} alt={p.name} loading="lazy" />
-              : <span class="hl-card__avatar" style="display:grid;place-items:center;font-family:var(--serif);color:var(--gold-600)">{initials(p.name)}</span>}
-            <div>
-              <div class="hl-card__name">{p.name}</div>
-              <div class="hl-card__role">{p.role}</div>
-            </div>
+              ? <img src={p.image} alt={p.name} loading="lazy" />
+              : <span class="team__fallback">{initials(p.name)}</span>}
+            <span class="speaker__issue">{p.issue}</span>
           </div>
-          {p.company && <p class="hl-card__role" style="margin-top:4px">{p.company}</p>}
+          <h3 class="speaker__name">{p.name}</h3>
+          <p class="speaker__role">{p.role}</p>
+          <div class="speaker__tags"><span class="tag">{p.category}</span></div>
         </article>
       ))}
     </div>
 
-    <h3 class="legacy__subhead reveal" style="margin-top:clamp(56px,6vw,86px)">What Our Partners & Guests Say</h3>
+    <h3 class="legacy__subhead reveal" style="margin-top:clamp(48px,5vw,72px)">What Partners & Guests Say</h3>
     <div class="highlights__grid">
       {legacyTestimonials.map((t) => (
         <article class="hl-card reveal">
@@ -69,14 +66,14 @@ const initials = (n) => n.split(' ').filter(Boolean).slice(0, 2).map((w) => w[0]
               : <span class="hl-card__avatar" style="display:grid;place-items:center;font-family:var(--serif);color:var(--gold-600)">{initials(t.name)}</span>}
             <div>
               <div class="hl-card__name">{t.name}</div>
-              <div class="hl-card__role">{t.tagline} · {t.subtext}</div>
+              <div class="hl-card__role">{t.tagline}</div>
             </div>
           </div>
         </article>
       ))}
     </div>
 
-    <div class="reveal" style="margin-top:clamp(48px,5vw,72px);display:flex;gap:16px;flex-wrap:wrap">
+    <div class="reveal" style="margin-top:clamp(40px,4.4vw,60px);display:flex;gap:16px;flex-wrap:wrap">
       <a class="btn btn--paper" href="#archive">Read the Magazine</a>
       <a class="btn btn--paper" href="#partners">Become a Partner</a>
     </div>
