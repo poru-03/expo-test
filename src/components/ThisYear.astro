@@ -1,0 +1,43 @@
+---
+const dates = [
+  { when: 'August 2026', what: 'EXPO NEXT 10 registration opens' },
+  { when: 'Late August 2026', what: 'University Tech Events Hub goes live', note: 'currently gathering listings — may launch as “Coming Soon”' },
+  { when: '11–12 January 2027', what: 'Industrial Week & Career Fair' },
+  { when: '15 January 2027', what: 'Industrial Forum' },
+  { when: '15 January 2027', what: 'Exposition Magazine Launch — Issue 22 launch + EXPO NEXT 10 prize-giving' },
+];
+const whatsNew = ['Voices of Vision (podcast)', 'University Tech Events Hub', 'EXPO NEXT 10'];
+---
+<section class="section" id="this-year" data-ground="paper">
+  <div class="section__inner">
+    <div class="section-head reveal">
+      <span class="label label--gold">This Year · Issue 22</span>
+      <h2 class="display">Where Students Meet <em>Industry</em></h2>
+    </div>
+    <div class="issue__grid">
+      <div class="issue__copy">
+        <p class="lede reveal">A professional, elegant, modern theme — consistent with Exposition's identity as a serious business publication, not a one-off conceptual theme.</p>
+        <hr class="hairline issue__rule reveal" />
+        <div class="datelist">
+          {dates.map((d) => (
+            <div class="datelist__row reveal">
+              <span class="datelist__when label label--gold">{d.when}</span>
+              <span class="datelist__what">{d.what}{d.note && <em class="datelist__note"> ({d.note})</em>}</span>
+            </div>
+          ))}
+        </div>
+        <p class="reveal" style="margin-top:28px"><strong>Venue:</strong> A8 Auditorium, University of Kelaniya, for the Career Fair, Forum, and Magazine Launch — open to partnering with other halls on campus if capacity requires it.</p>
+      </div>
+      <div class="stats">
+        <div class="stat reveal">
+          <span class="stat__num" style="font-size:clamp(20px,2vw,26px);font-weight:300;line-height:1.4">New this year</span>
+        </div>
+        {whatsNew.map((w) => (
+          <div class="stat reveal">
+            <span class="stat__label label" style="text-transform:none;letter-spacing:normal;font-size:16px;color:var(--ink)">{w}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

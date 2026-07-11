@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
-import { testimonials } from '../../data/testimonials.js';
+import { homepageTestimonials as testimonials } from '../../data/testimonials.js';
+
+const initials = (n) => n.split(' ').filter(Boolean).slice(0, 2).map((w) => w[0]).join('');
 
 export default function VoicesCarousel() {
   const [i, setI] = useState(0);
@@ -22,7 +24,11 @@ export default function VoicesCarousel() {
         <div className="voices2__track" style={{ transform: `translateX(-${i * 100}%)` }}>
           {testimonials.map((t) => (
             <div className="voices2__slide" key={t.name}>
-              <div className="voices2__photo"><img src={t.image} alt={t.name} loading="lazy" /></div>
+              <div className="voices2__photo">
+                {t.image
+                  ? <img src={t.image} alt={t.name} loading="lazy" />
+                  : <span className="team__fallback">{initials(t.name)}</span>}
+              </div>
               <div>
                 <blockquote className="voices2__quote">“{t.quote}”</blockquote>
                 <div className="voices2__name">{t.name}</div>

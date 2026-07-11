@@ -214,6 +214,10 @@ html:not(.no-motion) .hero__bloom { animation: bloom 14s ease-in-out infinite; }
 .hero__issue { display: inline-flex; align-items: baseline; gap: 0.34em; font-weight: 300; font-size: clamp(15px,1.4vw,19px); letter-spacing: 0.42em; text-transform: uppercase; color: var(--paper-70); }
 .hero__issue .foil-num { font-size: 1.9em; letter-spacing: 0; }
 .hero__edition { color: var(--paper-40); font-size: 10.5px; letter-spacing: 0.28em; }
+.hero__subhead { max-width: 62ch; margin: clamp(24px,3vw,36px) auto 0; color: var(--paper-70); font-size: clamp(15px,1.5vw,18px); line-height: 1.6; font-weight: 300; }
+.hero__thisyear { display: block; margin-top: 18px; color: var(--gold-400); }
+.hero__actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 16px; margin-top: clamp(28px,3.4vw,40px); }
+.hero__actions-secondary { opacity: 0.85; }
 .hero__cue { position: absolute; z-index: 3; left: 50%; bottom: clamp(26px,4vh,52px); transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 14px; text-decoration: none; color: var(--paper-40); }
 .hero__cue .label { font-size: 9.5px; letter-spacing: 0.4em; }
 .hero__cue-line { width: 1px; height: 54px; background: linear-gradient(to bottom, var(--gold-200), rgba(221,196,154,0)); overflow: hidden; position: relative; }
@@ -292,6 +296,9 @@ html:not(.no-motion) .hero__cue-line::after { content: ''; position: absolute; l
 .speaker__quote { margin-top: 14px; font-weight: 300; font-size: 15px; line-height: 1.5; color: var(--ink-60); border-left: 1px solid var(--gold-500); padding-left: 14px; }
 .ink-chapter .speaker__quote { color: var(--paper-70); }
 .speaker__tags { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; }
+.speaker__note { margin-top: 10px; font-size: 11px; letter-spacing: 0.06em; color: var(--gold-400); cursor: help; }
+.legacy__subhead { font-family: var(--serif); font-weight: 500; font-size: clamp(20px,2.2vw,28px); margin-bottom: clamp(24px,2.6vw,36px); }
+.legacy__subhead em { font-style: italic; }
 .tag { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-600); border: 1px solid var(--ink-12); padding: 5px 10px; }
 .ink-chapter .tag { color: var(--gold-200); border-color: var(--paper-12); }
 
@@ -320,6 +327,18 @@ html:not(.no-motion) .hero__cue-line::after { content: ''; position: absolute; l
 .partner-card img { max-width: 78%; max-height: 62%; object-fit: contain; }
 .partner-card__fallback { font-family: var(--serif); font-size: 26px; color: var(--gold-600); }
 .partner-card__tier { position: absolute; top: 10px; left: 10px; font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold-600); }
+
+/* ---------- Archive ---------- */
+.archive__status { border-top: 1px solid var(--gold-500); background: var(--panel); padding: clamp(24px,2.4vw,34px); margin-bottom: 28px; max-width: 68ch; }
+.archive__status p { margin-top: 10px; font-weight: 300; font-size: 16px; }
+.archive__status a { color: var(--gold-600); }
+.archive__lede { font-weight: 300; font-size: clamp(16px,1.35vw,19px); max-width: 62ch; margin-bottom: clamp(28px,3vw,40px); }
+.archive__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: clamp(10px,1.2vw,16px); }
+.archive-card { aspect-ratio: 3/4; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; background: var(--panel); border: 1px solid var(--ink-12); text-decoration: none; transition: transform 0.5s var(--ease-out), box-shadow 0.5s var(--ease-out); }
+.archive-card:hover { transform: translateY(-4px); box-shadow: 0 22px 44px rgba(20,17,10,0.10); }
+.archive-card__num { font-size: 28px; color: var(--gold-600); }
+.archive-card__read { font-size: 9px; letter-spacing: 0.2em; color: var(--ink-60); opacity: 0; transition: opacity 0.3s ease; }
+.archive-card:hover .archive-card__read { opacity: 1; }
 
 /* ---------- OC Team (island) ---------- */
 .team { position: relative; }
@@ -395,6 +414,12 @@ html:not(.no-motion) .hero__cue-line::after { content: ''; position: absolute; l
 .form .btn { justify-self: start; margin-top: 6px; }
 .form__note { font-size: 13px; color: var(--ink-60); font-weight: 300; }
 .coordinators { display: grid; gap: 18px; }
+.datelist { display: flex; flex-direction: column; }
+.datelist__row { display: grid; grid-template-columns: minmax(120px,180px) 1fr; gap: 18px; padding: 16px 0; border-top: 1px solid var(--ink-12); }
+.datelist__what { font-weight: 300; font-size: 16px; }
+.datelist__note { color: var(--ink-60); font-style: italic; }
+
+.coordinator__address { font-weight: 300; font-size: 15px; color: var(--ink-60); margin-bottom: 24px; }
 .coordinator { border-top: 1px solid var(--ink-12); padding-top: 20px; }
 .coordinator .name { font-weight: 500; font-size: 17px; }
 .coordinator .role { margin-top: 4px; }

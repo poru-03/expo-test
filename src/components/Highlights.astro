@@ -1,15 +1,16 @@
 ---
-import { keynoteSpeakers } from '../data/speakers.js';
+import { highlights } from '../data/speakers.js';
 const initials = (n) => n.split(' ').filter(Boolean).slice(0, 2).map((w) => w[0]).join('');
 ---
-<section class="section ink-chapter" id="speakers" data-ground="ink">
+<section class="section" id="highlights" data-ground="paper">
   <div class="section__inner">
     <div class="section-head reveal">
-      <span class="label label--gold">Keynote Speakers</span>
-      <h2 class="display">Voices that fuelled our <em>vision</em></h2>
+      <span class="label label--gold">Highlights</span>
+      <h2 class="display">Undergraduates <em>secured</em> these names</h2>
     </div>
+    <p class="reveal archive__lede">Undergraduates — not a PR agency — have secured, interviewed, and hosted these names.</p>
     <div class="people-rail" role="list">
-      {keynoteSpeakers.map((s) => (
+      {highlights.map((s) => (
         <article class="speaker" role="listitem">
           <div class="speaker__photo">
             {s.image
@@ -20,14 +21,11 @@ const initials = (n) => n.split(' ').filter(Boolean).slice(0, 2).map((w) => w[0]
           <h3 class="speaker__name">{s.name}</h3>
           <p class="speaker__role">{s.role}</p>
           {s.company && <p class="speaker__company">{s.company}</p>}
-          {s.tags?.length > 0 && (
-            <div class="speaker__tags">
-              {s.tags.map((t) => <span class="tag">{t}</span>)}
-            </div>
-          )}
         </article>
       ))}
     </div>
+    <div class="reveal" style="margin-top:40px">
+      <a class="btn btn--ink" href="#legacy">See the Full Highlights Wall →</a>
+    </div>
   </div>
-  <div class="grain" aria-hidden="true"></div>
 </section>

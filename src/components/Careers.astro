@@ -1,0 +1,38 @@
+---
+const sectors = [
+  'IT',
+  'Project Management / Programme Management',
+  'Sales / Marketing / New Business Development',
+  'Supply Chain / Logistics / Procurement',
+  'IT-Hardware / Networks / Systems',
+  'Internships',
+];
+---
+<section class="section" id="careers" data-ground="paper">
+  <div class="section__inner">
+    <div class="section-head reveal">
+      <span class="label label--gold">Careers</span>
+      <h2 class="display">Explore Open <em>Positions</em></h2>
+    </div>
+    <p class="reveal archive__lede">Find your perfect role and start your journey with us today.</p>
+
+    <div class="issue__grid">
+      <div class="issue__copy">
+        <h3 class="legacy__subhead reveal" style="font-size:clamp(18px,1.8vw,22px)">Careers via XpressJobs</h3>
+        <p class="reveal" style="margin-bottom:20px">External roles across Sri Lanka's industry — select a sector to browse.</p>
+        <div class="speaker__tags reveal">
+          {sectors.map((s) => <span class="tag">{s}</span>)}
+        </div>
+        <p class="reveal" style="margin-top:24px"><span class="label">Powered by XpressJobs</span> — <a href="https://xpressjobs.lk" target="_blank" rel="noopener" style="color:var(--gold-600)">xpressjobs.lk</a></p>
+      </div>
+      <div class="panel reveal">
+        <span class="label label--gold">Join the Exposition Team</span>
+        <h3>Help run Issue 22</h3>
+        <p>Exposition recruits its editorial, partnerships, marketing, and events team from undergraduates in the Department of Industrial Management each year. This year's recruitment cycle is being finalised.</p>
+        <div style="margin-top:24px">
+          <a class="btn btn--ink" href="#contact" data-open-contact>Get in Touch →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

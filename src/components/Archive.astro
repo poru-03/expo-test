@@ -1,0 +1,27 @@
+---
+import { archiveIssues } from '../data/archive.js';
+---
+<section class="section" id="archive" data-ground="paper">
+  <div class="section__inner">
+    <div class="section-head reveal">
+      <span class="label label--gold">Read the Magazine</span>
+      <h2 class="display">20+ years of Exposition, <em>in one place</em></h2>
+    </div>
+
+    <div class="archive__status reveal">
+      <span class="label label--gold">Issue 22 — Launching January 2027</span>
+      <p>Issue 22 is in production and launches 15 January 2027 at the Exposition Magazine Launch. Cover reveal and the full read/download link go live at the launch — <a href="#contact" data-open-contact>get notified</a> when it's ready.</p>
+    </div>
+
+    <p class="reveal archive__lede">While you wait, read 18 years of Exposition — Issues 1 through 18 are available in full below.</p>
+
+    <div class="archive__grid" role="list">
+      {archiveIssues.map((i) => (
+        <a class="archive-card reveal" role="listitem" href="https://exposition.lk" target="_blank" rel="noopener" aria-label={`Read Exposition Issue ${i.num}`}>
+          <span class="archive-card__num foil-num">{i.num}</span>
+          <span class="archive-card__read label">Read →</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
