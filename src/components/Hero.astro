@@ -1,9 +1,25 @@
 ---
 import HeroCarousel from './islands/HeroCarousel.jsx';
+
+const text = "EXPOSITION";
+const letters = text.split("");
+const totalAngle = 70;
+const startAngle = -(totalAngle / 2);
+const angleStep = totalAngle / (letters.length - 1);
+const radiusEm = 4.5;
 ---
 <section class="hero ink-chapter" id="hero" data-ground="ink">
   <div class="hero__glow" aria-hidden="true"></div>
-  <div class="hero__bg-22" aria-hidden="true">22</div>
+  
+  <div class="hero__bg-text-scene" aria-hidden="true">
+    <div class="hero__bg-text-spinner" style={`transform: translateZ(${radiusEm}em)`}>
+      {letters.map((letter, i) => (
+        <span class="hero__bg-letter" style={`transform: rotateY(${startAngle + i * angleStep}deg) translateZ(${-radiusEm}em)`}>
+          {letter}
+        </span>
+      ))}
+    </div>
+  </div>
   
   <div class="hero__scroll-indicator" aria-hidden="true">
     <span>Scroll to explore</span>
