@@ -178,11 +178,45 @@ function init() {
   function updateNavInk() { nav.classList.toggle('nav--ink', navInkList(48)); }
   const navObserver = new IntersectionObserver(updateNavInk, { threshold: [0, 1], rootMargin: '-48px 0px -100% 0px' });
   inkSections.forEach((s) => navObserver.observe(s));
-  window.addEventListener('scroll', updateNavInk, { passive: true });
-  updateNavInk();
+  
+  let lastScroll = 0;
+  const handleNavScroll = () => {
+    updateNavInk();
+    const current = window.scrollY;
+    // Hide nav while in the hero section (top 80vh)
+    if (current < window.innerHeight * 0.8) {
+      nav.classList.add('nav--hidden');
+    } else if (current > lastScroll) {
+      nav.classList.add('nav--hidden');
+    } else {
+      nav.classList.remove('nav--hidden');
+    }
+    lastScroll = current;
+  };
+  window.addEventListener('scroll', handleNavScroll, { passive: true });
+  handleNavScroll();
 
   /* Progress */
   gsap.ticker.add(scrollProgress);
+
+  /* Master Timeline Fill (Unified Journey) */
+  const timelineFill = document.getElementById('timelineFill');
+  const masterTimeline = document.querySelector('.master-timeline');
+  if (timelineFill && masterTimeline) {
+    gsap.fromTo(timelineFill, 
+      { height: '0%' },
+      { 
+        height: '100%', 
+        ease: 'none',
+        scrollTrigger: {
+          trigger: masterTimeline,
+          start: 'top center',
+          end: 'bottom center',
+          scrub: true
+        }
+      }
+    );
+  }
 
   bindForm();
   ScrollTrigger.refresh();

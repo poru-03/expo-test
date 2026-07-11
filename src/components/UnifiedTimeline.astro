@@ -1,0 +1,79 @@
+---
+const nodes = [
+  {
+    idx: '01',
+    date: 'August 2026',
+    title: 'EXPO NEXT 10',
+    desc: "Sri Lanka's first undergraduate recognition programme — ten exceptional students who already shape the decade ahead.",
+    badge: 'New This Year'
+  },
+  {
+    idx: '02',
+    date: 'Late August 2026',
+    title: 'University Tech Events Hub',
+    desc: 'A live digital platform aggregating university-level tech events across Sri Lanka — hackathons, robotics, innovation challenges.',
+    badge: 'New This Year'
+  },
+  {
+    idx: '03',
+    date: 'Ongoing',
+    title: 'Voices of Vision — Podcast',
+    desc: 'Long-form conversations with industry leaders, entrepreneurs and academics; the themes of the issue, spoken aloud.',
+    badge: 'New This Year'
+  },
+  {
+    idx: '04',
+    date: '11–12 January 2027',
+    title: 'Industrial Week & Career Fair',
+    desc: 'A recruitment platform where top companies meet motivated undergraduates and fresh graduates from across the University of Kelaniya.'
+  },
+  {
+    idx: '05',
+    date: '15 January 2027',
+    title: 'Industrial Forum',
+    desc: 'A high-impact thought-leadership stage where industry, academics and students argue the questions that matter to both.'
+  },
+  {
+    idx: '06',
+    date: '15 January 2027',
+    title: 'Exposition Magazine Launch',
+    desc: 'The annual flagship launch and the closing evening of Industrial Week. Features the EXPO NEXT 10 prize-giving.',
+    venue: 'Venue: A8 Auditorium, University of Kelaniya'
+  }
+];
+---
+<section class="section ink-chapter" id="unified-timeline" data-ground="ink">
+  <div class="section__inner">
+    <div class="section-head reveal" style="text-align: center; margin-bottom: 5rem;">
+      <span class="label label--gold">The Journey</span>
+      <h2 class="display">Where Students Meet <em>Industry</em></h2>
+      <p class="lede" style="margin-top: 1rem; max-width: 600px; margin-left: auto; margin-right: auto; color: var(--paper-70);">One magazine, one podcast, and a calendar of live events — designed around a single goal: connect students directly with industry.</p>
+    </div>
+    
+    <div class="master-timeline">
+      <div class="master-timeline__center-line">
+        <div class="master-timeline__cap master-timeline__cap--top"></div>
+        <div class="master-timeline__fill" id="timelineFill"></div>
+        <div class="master-timeline__cap master-timeline__cap--bottom"></div>
+      </div>
+      
+      {nodes.map((node, i) => (
+        <div class={`master-timeline__row ${i % 2 === 0 ? 'master-timeline__row--left' : 'master-timeline__row--right'}`}>
+          <div class="master-timeline__node reveal">
+            <div class="master-timeline__marker"></div>
+            <div class="master-timeline__content glass-panel">
+              <div class="master-timeline__header">
+                <span class="master-timeline__date label label--gold">{node.date}</span>
+                {node.badge && <span class="master-timeline__badge">{node.badge}</span>}
+                {node.venue && <span class="master-timeline__venue">{node.venue}</span>}
+              </div>
+              <h3 class="master-timeline__title">{node.title}</h3>
+              <p class="master-timeline__desc">{node.desc}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+  <div class="grain" aria-hidden="true"></div>
+</section>

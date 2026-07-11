@@ -1,26 +1,16 @@
 ---
 import { events } from '../data/events.js';
+import EventsModal from './islands/EventsModal.jsx';
 ---
 <section class="section ink-chapter" id="events" data-ground="ink">
   <div class="section__inner">
-    <div class="section-head section-head--wide reveal">
+    <div class="section-head section-head--wide reveal" style="text-align: center;">
       <span class="label label--gold">The Season</span>
       <h2 class="display">One magazine, <em>many stages</em></h2>
     </div>
-    <div class="bento stagger">
-      {events.map((e) => (
-        <article class="bento__card">
-          <div class="bento__media">
-            <img src={e.image} alt={e.alt} loading="lazy" />
-          </div>
-          <div class="bento__body">
-            <span class="label label--gold">{e.label}</span>
-            <h3 class="bento__title" set:html={e.title}></h3>
-            <p class="bento__desc">{e.body[0]}</p>
-          </div>
-        </article>
-      ))}
-    </div>
+    
+    <EventsModal events={events} client:visible />
+    
   </div>
   <div class="grain" aria-hidden="true"></div>
 </section>

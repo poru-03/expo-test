@@ -1,21 +1,18 @@
 ---
+import HeroCarousel from './islands/HeroCarousel.jsx';
 ---
 <section class="hero ink-chapter" id="hero" data-ground="ink">
   <div class="hero__glow" aria-hidden="true"></div>
-  <div class="hero__frame" aria-hidden="true"></div>
-  <div class="hero__grid">
-    <div class="hero__content">
-      <span class="hero__eyebrow label" id="heroEyebrow">Issue 22 · Dept. of Industrial Management, University of Kelaniya</span>
-      <h1 class="hero__wordmark display" id="heroWordmark">EXPOSITION<span class="hero__tagline">Where Students Meet Industry</span></h1>
-      <p class="hero__sub" id="heroSub">The flagship student-run magazine of the Department of Industrial Management. Twenty years of undergraduates landing the names in it.</p>
-      <div class="hero__actions" id="heroActions">
-        <a class="btn btn--paper" href="#archive">Read the Magazine</a>
-        <a class="btn btn--paper hero__actions-secondary" href="#this-year">This Year</a>
-      </div>
-    </div>
-    <div class="hero__monument" aria-hidden="true">
-      <span class="hero__ghost foil-num">22</span>
-    </div>
+  <div class="hero__bg-22" aria-hidden="true">22</div>
+  
+  <div class="hero__scroll-indicator" aria-hidden="true">
+    <span>Scroll to explore</span>
+    <div class="hero__scroll-line"></div>
   </div>
+
+  <div class="hero__carousel-wrapper">
+    <HeroCarousel client:load />
+  </div>
+
   <div class="grain" aria-hidden="true"></div>
 </section>
